@@ -24,6 +24,7 @@
 | deploy-prod | `deploy-prod/SKILL.md` | 운영 환경에 배포할 때. 보안 점검 실패 시 즉시 중단한다. |
 | complete-task | `complete-task/SKILL.md` | 작업이 끝난 후 git diff 기반으로 `docs/` 문서를 자동 업데이트할 때. |
 | share-update | `share-update/SKILL.md` | 배포 후 팀 내부 공유용 HTML 문서를 생성할 때. |
+| moa-readme | `moa-readme/SKILL.md` | README.md를 생성하거나 업데이트할 때. 모아나 위키봇이 최적으로 읽을 수 있는 구조로 작성한다. |
 
 ## 기본 행동 규칙
 
