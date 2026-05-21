@@ -17,6 +17,17 @@ Claude는 아래 트리거 조건에 해당하는 요청이 들어오면, 반드
 | "운영 배포해줘", "배포해줘", "deploy-prod" 등 운영 환경 배포 요청 | `.claude/skills/deploy-prod/SKILL.md` |
 | "공유 문서 만들어줘", "share-update" 등 업데이트 공유 요청 | `.claude/skills/share-update/SKILL.md` |
 
+## 사전 조건 규칙
+
+아래 스킬을 실행하기 전에 반드시 프로젝트 초기화 상태를 확인한다.
+
+**확인 대상 스킬:** develop, plan-feature, build-feature, deploy-dev, deploy-prod
+
+**확인 방법:** 프로젝트 루트에 `package.json`이 존재하는지 확인한다.
+
+- `package.json`이 없으면 → 사용자의 원래 요청을 기억해두고, 먼저 `moa-init` 스킬을 실행한다. Init 완료 후 원래 요청을 이어서 처리한다.
+- `package.json`이 있으면 → 트리거된 스킬을 그대로 실행한다.
+
 ## 기본 행동 규칙
 
 - 스킬 실행 중에는 스킬 파일의 지침을 우선 따른다.
