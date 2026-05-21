@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" href="../colors_and_type.css">
+<style>
+  html, body { margin: 0; padding: 0; background: var(--alias-color-background-normal); }
+  .card { width: 700px; box-sizing: border-box; padding: 24px 28px; }
+  .section-title { font: 500 11px/14px var(--font-sans); letter-spacing: 0.02em; color: var(--alias-color-label-alternative); margin-bottom: 12px; text-transform: uppercase; }
+  .row { display: flex; gap: 10px; flex-wrap: wrap; align-items: center; }
+  /* TAG / CHIP — base capsule */
+  .tag {
+    display: inline-flex; align-items: center; gap: 4px;
+    border-radius: 40px;
+    font-family: var(--font-sans);
+    line-height: 1;
+    white-space: nowrap;
+  }
+  .tag.sm { padding: 4px 10px; font-size: 12px; font-weight: 500; letter-spacing: 0.02em; line-height: 16px; height: 24px; box-sizing: border-box; }
+  .tag.md { padding: 4px 12px; font-size: 14px; font-weight: 500; letter-spacing: 0.01em; line-height: 22px; height: 30px; box-sizing: border-box; }
+  .dot { width: 12px; height: 12px; border-radius: 9999px; background: currentColor; opacity: .9; }
+  
+  .group { display: flex; flex-direction: column; gap: 16px; }
+  .stag {
+    display: inline-flex; align-items: center; gap: 8px;
+    padding: 8px 16px; border-radius: 9999px;
+    font: 600 14px/1 var(--font-sans); letter-spacing: 0.01em; height: 36px; box-sizing: border-box;
+  }
+  .stag.dev { background: #00A661; color: #fff; }
+  .stag.des { background: #FFC933; color: #1B1D1F; }
+  .stag.wip { background: rgba(71,76,82,.16); color: #181A1B; }
+  .stag.dep { background: #FF3E3E; color: #fff; }
+  .stag .dot { width: 8px; height: 8px; background: currentColor; opacity: .9; border-radius: 9999px; }
+
+</style>
+</head>
+<body>
+<div class="card">
+<div class="group">
+  <div class="section-title">Spec status — used by designers to annotate component readiness</div>
+  <div class="row">
+    <span class="stag dev"><span class="dot"></span>Develop complete</span>
+    <span class="stag des"><span class="dot"></span>Design complete</span>
+    <span class="stag wip"><span class="dot"></span>In progress</span>
+    <span class="stag dep"><span class="dot"></span>Deprecated</span>
+  </div>
+</div>
+</div></body></html>

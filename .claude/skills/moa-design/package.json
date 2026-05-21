@@ -1,0 +1,20 @@
+{
+  "name": "@moa-admin/design-system",
+  "version": "0.3.1",
+  "description": "MOA 디자인 시스템 — 컬러, 타이포그래피, 간격, 반경, 그림자 토큰",
+  "main": "index.css",
+  "files": [
+    "index.css",
+    "colors_and_type.css",
+    "fonts/",
+    "component-references/",
+    "assets/",
+    "SKILL.md"
+  ],
+  "keywords": ["moa", "design-system", "css"],
+  "author": "moa-admin",
+  "license": "UNLICENSED",
+  "publishConfig": {
+    "access": "public"
+  }
+}

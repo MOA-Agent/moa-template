@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" href="../colors_and_type.css">
+<style>
+  html, body { margin: 0; padding: 0; background: var(--alias-color-background-normal); }
+  .card { width: 700px; box-sizing: border-box; padding: 24px 28px; }
+  .section-title { font: 500 11px/14px var(--font-sans); letter-spacing: 0.02em; color: var(--alias-color-label-alternative); margin-bottom: 12px; text-transform: uppercase; }
+  .row { display: flex; gap: 10px; flex-wrap: wrap; align-items: center; }
+  /* TAG / CHIP — base capsule */
+  .tag {
+    display: inline-flex; align-items: center; gap: 4px;
+    border-radius: 40px;
+    font-family: var(--font-sans);
+    line-height: 1;
+    white-space: nowrap;
+  }
+  .tag.sm { padding: 4px 10px; font-size: 12px; font-weight: 500; letter-spacing: 0.02em; line-height: 16px; height: 24px; box-sizing: border-box; }
+  .tag.md { padding: 4px 12px; font-size: 14px; font-weight: 500; letter-spacing: 0.01em; line-height: 22px; height: 30px; box-sizing: border-box; }
+  .dot { width: 12px; height: 12px; border-radius: 9999px; background: currentColor; opacity: .9; }
+  
+  .group { display: flex; flex-direction: column; gap: 14px; }
+  .chip-o {
+    display:inline-flex; align-items:center; gap:6px;
+    background: transparent; color: #181A1B;
+    border: 1px solid #D6D9DB;
+    border-radius: 40px; padding: 5px 12px;
+    font: 500 14px/1 var(--font-sans); letter-spacing: 0.01em; height: 30px; box-sizing: border-box;
+  }
+  .chip-o.selected { border-color: #3885FF; color: #0062FF; background: #CCE0FF; }
+  .chip-o.hover { background: rgba(146,153,160,.08); }
+  .chip-o.press { background: rgba(146,153,160,.16); }
+  .chip-o.disabled { color: rgba(71,76,82,.35); border-color: #E4E5E7; }
+
+</style>
+</head>
+<body>
+<div class="card">
+<div class="group">
+  <div class="section-title">Chip / outlined · primary states</div>
+  <div class="row">
+    <span class="chip-o">Default</span>
+    <span class="chip-o hover">Hover</span>
+    <span class="chip-o press">Pressed</span>
+    <span class="chip-o selected">Selected</span>
+    <span class="chip-o disabled">Disabled</span>
+  </div>
+</div>
+</div></body></html>

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" href="../colors_and_type.css">
+<style>
+  html, body { margin: 0; padding: 0; background: var(--alias-color-background-normal); }
+  .card { width: 700px; box-sizing: border-box; padding: 24px 28px; }
+  .row { display: flex; gap: 12px; align-items: center; }
+  .col { display: flex; flex-direction: column; gap: 8px; }
+  .swatch { display: flex; flex-direction: column; gap: 8px; }
+  .chip {
+    width: 88px; height: 88px; border-radius: 12px;
+    box-shadow: inset 0 0 0 1px rgba(0,0,0,.04);
+  }
+  .chip.sm { width: 64px; height: 64px; border-radius: 10px; }
+  .chip-meta { display: flex; flex-direction: column; gap: 2px; }
+  .chip-name { font-size: 13px; font-weight: 600; color: var(--alias-color-label-normal); letter-spacing: 0.01em; }
+  .chip-val  { font-size: 11px; font-weight: 500; color: var(--alias-color-label-alternative); font-feature-settings: "tnum"; letter-spacing: 0.02em; }
+  
+  .grid { display: flex; align-items: flex-end; gap: 18px; height: 180px; padding: 8px 0; }
+  .col { display: flex; flex-direction: column; align-items: center; gap: 6px; }
+  .bar { background: var(--alias-color-primary-normal); opacity: .35; border-radius: 2px; width: 22px; }
+  .px { font: 500 11px/14px var(--font-sans); letter-spacing: 0.02em; color: var(--alias-color-label-alternative); font-feature-settings: "tnum"; }
+  .label-row { display: flex; gap: 6px; font: 500 12px/16px var(--font-sans); color: var(--alias-color-label-alternative); margin-bottom: 12px; letter-spacing: 0.01em; }
+  .label-row b { color: var(--alias-color-label-normal); font-weight: 700; }
+
+</style>
+</head>
+<body>
+<div class="card">
+<div class="label-row"><b>Base unit 4px</b> — 4× scale: 4 / 8 / 12 / 16 / 20 / 24 / 32 / 40 / 48 / 64 / 80 / 120</div>
+<div class="grid">
+  <div class="col"><div class="bar" style="height:4px"></div><div class="px">4</div></div>
+  <div class="col"><div class="bar" style="height:8px"></div><div class="px">8</div></div>
+  <div class="col"><div class="bar" style="height:12px"></div><div class="px">12</div></div>
+  <div class="col"><div class="bar" style="height:16px"></div><div class="px">16</div></div>
+  <div class="col"><div class="bar" style="height:20px"></div><div class="px">20</div></div>
+  <div class="col"><div class="bar" style="height:24px"></div><div class="px">24</div></div>
+  <div class="col"><div class="bar" style="height:32px"></div><div class="px">32</div></div>
+  <div class="col"><div class="bar" style="height:40px"></div><div class="px">40</div></div>
+  <div class="col"><div class="bar" style="height:48px"></div><div class="px">48</div></div>
+  <div class="col"><div class="bar" style="height:64px"></div><div class="px">64</div></div>
+  <div class="col"><div class="bar" style="height:80px"></div><div class="px">80</div></div>
+  <div class="col"><div class="bar" style="height:120px"></div><div class="px">120</div></div>
+</div>
+</div></body></html>

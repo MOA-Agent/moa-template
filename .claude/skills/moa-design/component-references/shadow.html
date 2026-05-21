@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" href="../colors_and_type.css">
+<style>
+  html, body { margin: 0; padding: 0; background: var(--alias-color-background-normal); }
+  .card { width: 700px; box-sizing: border-box; padding: 24px 28px; }
+  .row { display: flex; gap: 12px; align-items: center; }
+  .col { display: flex; flex-direction: column; gap: 8px; }
+  .swatch { display: flex; flex-direction: column; gap: 8px; }
+  .chip {
+    width: 88px; height: 88px; border-radius: 12px;
+    box-shadow: inset 0 0 0 1px rgba(0,0,0,.04);
+  }
+  .chip.sm { width: 64px; height: 64px; border-radius: 10px; }
+  .chip-meta { display: flex; flex-direction: column; gap: 2px; }
+  .chip-name { font-size: 13px; font-weight: 600; color: var(--alias-color-label-normal); letter-spacing: 0.01em; }
+  .chip-val  { font-size: 11px; font-weight: 500; color: var(--alias-color-label-alternative); font-feature-settings: "tnum"; letter-spacing: 0.02em; }
+  
+  .row { display: flex; gap: 36px; padding: 24px 8px; align-items: flex-end; }
+  .item { display: flex; flex-direction: column; align-items: center; gap: 14px; }
+  .box { width: 110px; height: 110px; background: #fff; border-radius: 16px; }
+  .b1 { box-shadow: var(--alias-style-shadow-normal); }
+  .b2 { box-shadow: var(--alias-style-shadow-strong); }
+  .b3 { box-shadow: var(--alias-style-shadow-heavy); }
+  .label { font: 600 13px/16px var(--font-sans); color: var(--alias-color-label-normal); }
+  .meta { font: 500 11px/14px var(--font-sans); letter-spacing: 0.02em; color: var(--alias-color-label-alternative); }
+
+</style>
+</head>
+<body>
+<div class="card">
+<div class="row">
+  <div class="item"><div class="box b1"></div><div class="label">Normal</div><div class="meta">resting cards</div></div>
+  <div class="item"><div class="box b2"></div><div class="label">Strong</div><div class="meta">popovers</div></div>
+  <div class="item"><div class="box b3"></div><div class="label">Heavy</div><div class="meta">modals · dropdowns</div></div>
+</div>
+</div></body></html>

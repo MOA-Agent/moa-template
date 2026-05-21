@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" href="../colors_and_type.css">
+<style>
+  html, body { margin: 0; padding: 0; background: var(--alias-color-background-normal); }
+  .card { width: 700px; box-sizing: border-box; padding: 24px 28px; }
+  .row { display: flex; gap: 12px; align-items: center; }
+  .col { display: flex; flex-direction: column; gap: 8px; }
+  .swatch { display: flex; flex-direction: column; gap: 8px; }
+  .chip {
+    width: 88px; height: 88px; border-radius: 12px;
+    box-shadow: inset 0 0 0 1px rgba(0,0,0,.04);
+  }
+  .chip.sm { width: 64px; height: 64px; border-radius: 10px; }
+  .chip-meta { display: flex; flex-direction: column; gap: 2px; }
+  .chip-name { font-size: 13px; font-weight: 600; color: var(--alias-color-label-normal); letter-spacing: 0.01em; }
+  .chip-val  { font-size: 11px; font-weight: 500; color: var(--alias-color-label-alternative); font-feature-settings: "tnum"; letter-spacing: 0.02em; }
+  
+  .stage { width: 644px; height: 280px; background: #151515; border-radius: 12px; padding: 36px 40px; box-sizing: border-box; display: flex; flex-direction: column; justify-content: space-between; }
+  .title { font: 700 44px/1 var(--font-sans); color: #fff; letter-spacing: -0.03em; }
+  .pill { background: var(--alias-color-primary-normal); color: #fff; border-radius: 10px; padding: 6px 18px; font: 700 18px/1 var(--font-sans); display: inline-flex; align-self: flex-start; }
+
+</style>
+</head>
+<body>
+<div class="card">
+<div class="stage">
+  <div class="title">Mile Design System_Web</div>
+  <div class="pill">v. 1.0</div>
+</div>
+</div></body></html>

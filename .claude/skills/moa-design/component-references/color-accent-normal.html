@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" href="../colors_and_type.css">
+<style>
+  html, body { margin: 0; padding: 0; background: var(--alias-color-background-normal); }
+  .card { width: 700px; box-sizing: border-box; padding: 24px 28px; }
+  .row { display: flex; gap: 12px; align-items: center; }
+  .col { display: flex; flex-direction: column; gap: 8px; }
+  .swatch { display: flex; flex-direction: column; gap: 8px; }
+  .chip {
+    width: 88px; height: 88px; border-radius: 12px;
+    box-shadow: inset 0 0 0 1px rgba(0,0,0,.04);
+  }
+  .chip.sm { width: 64px; height: 64px; border-radius: 10px; }
+  .chip-meta { display: flex; flex-direction: column; gap: 2px; }
+  .chip-name { font-size: 13px; font-weight: 600; color: var(--alias-color-label-normal); letter-spacing: 0.01em; }
+  .chip-val  { font-size: 11px; font-weight: 500; color: var(--alias-color-label-alternative); font-feature-settings: "tnum"; letter-spacing: 0.02em; }
+  
+  .row { display: flex; gap: 12px; }
+  .item { display: flex; flex-direction: column; gap: 8px; width: calc((100% - 72px) / 7); }
+  .chip { width: 100%; aspect-ratio: 1/1; border-radius: 12px; box-shadow: inset 0 0 0 1px rgba(0,0,0,.04); }
+  .chip-name { font-size: 12px; }
+  .chip-val { font-size: 10px; }
+
+</style>
+</head>
+<body>
+<div class="card">
+<div class="row">
+  <div class="item"><div class="chip" style="background:#FF5CAF"></div><div class="chip-meta"><span class="chip-name">Pink</span><span class="chip-val">#FF5CAF</span></div></div>
+  <div class="item"><div class="chip" style="background:#FFD666"></div><div class="chip-meta"><span class="chip-name">Yellow</span><span class="chip-val">#FFD666</span></div></div>
+  <div class="item"><div class="chip" style="background:#FB6C4B"></div><div class="chip-meta"><span class="chip-name">Orange</span><span class="chip-val">#FB6C4B</span></div></div>
+  <div class="item"><div class="chip" style="background:#C0EB47"></div><div class="chip-meta"><span class="chip-name">Lime</span><span class="chip-val">#C0EB47</span></div></div>
+  <div class="item"><div class="chip" style="background:#47EBD7"></div><div class="chip-meta"><span class="chip-name">Cyan</span><span class="chip-val">#47EBD7</span></div></div>
+  <div class="item"><div class="chip" style="background:#33CEFF"></div><div class="chip-meta"><span class="chip-name">Skyblue</span><span class="chip-val">#33CEFF</span></div></div>
+  <div class="item"><div class="chip" style="background:#B135FD"></div><div class="chip-meta"><span class="chip-name">Purple</span><span class="chip-val">#B135FD</span></div></div>
+</div>
+</div></body></html>

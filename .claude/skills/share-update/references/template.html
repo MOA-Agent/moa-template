@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>{프로젝트 이름} 업데이트 안내</title>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: "Pretendard Variable", "Pretendard", -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", sans-serif;
+    background: #FAFAFA;
+    color: #181A1B;
+    -webkit-font-smoothing: antialiased;
+    padding: 40px 16px;
+  }
+
+  .wrap { max-width: 640px; margin: 0 auto; }
+
+  /* 헤더 */
+  .header {
+    background: #FFFFFF;
+    border: 1px solid #F1F2F3;
+    border-radius: 16px;
+    padding: 28px 28px 24px;
+    margin-bottom: 12px;
+    box-shadow: 0 2px 12px rgba(0,0,0,.06), 0 1px 2px rgba(0,0,0,.04);
+  }
+  .header-meta {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 12px;
+  }
+  .badge {
+    display: inline-block;
+    background: #CCE0FF;
+    color: #0062FF;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    padding: 3px 8px;
+    border-radius: 9999px;
+  }
+  .header-date {
+    font-size: 12px;
+    color: rgba(71,76,82,0.6);
+    letter-spacing: 0.02em;
+  }
+  .header-title {
+    font-size: 22px;
+    font-weight: 700;
+    line-height: 30px;
+    letter-spacing: -0.01em;
+    color: #181A1B;
+    margin-bottom: 8px;
+  }
+  .header-summary {
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 22px;
+    color: #5F666D;
+    letter-spacing: 0.01em;
+  }
+
+  /* 섹션 공통 */
+  .section {
+    background: #FFFFFF;
+    border: 1px solid #F1F2F3;
+    border-radius: 16px;
+    padding: 22px 24px;
+    margin-bottom: 12px;
+    box-shadow: 0 1px 2px rgba(0,0,0,.06);
+  }
+  .section-label {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    color: #9299A0;
+    text-transform: uppercase;
+    margin-bottom: 16px;
+  }
+
+  /* 신규 기능 */
+  .feature-item { margin-bottom: 20px; }
+  .feature-item:last-child { margin-bottom: 0; }
+  .feature-name {
+    font-size: 15px;
+    font-weight: 600;
+    line-height: 22px;
+    color: #181A1B;
+    margin-bottom: 4px;
+  }
+  .feature-desc {
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 22px;
+    color: #5F666D;
+    letter-spacing: 0.01em;
+  }
+  .feature-img {
+    margin-top: 12px;
+    width: 100%;
+    border-radius: 8px;
+    border: 1px solid #F1F2F3;
+    display: block;
+  }
+
+  /* 변경사항 */
+  .change-item {
+    padding: 14px 0;
+    border-bottom: 1px solid #F1F2F3;
+  }
+  .change-item:last-child { border-bottom: none; padding-bottom: 0; }
+  .change-item:first-child { padding-top: 0; }
+  .change-name {
+    font-size: 14px;
+    font-weight: 600;
+    color: #181A1B;
+    margin-bottom: 10px;
+  }
+  .diff {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+  }
+  .diff-box {
+    border-radius: 8px;
+    padding: 10px 12px;
+  }
+  .diff-box.before {
+    background: rgba(255,62,62,0.06);
+    border: 1px solid rgba(255,62,62,0.14);
+  }
+  .diff-box.after {
+    background: rgba(0,166,97,0.06);
+    border: 1px solid rgba(0,166,97,0.14);
+  }
+  .diff-label {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    margin-bottom: 4px;
+  }
+  .diff-box.before .diff-label { color: #FF3E3E; }
+  .diff-box.after  .diff-label { color: #00A661; }
+  .diff-text {
+    font-size: 13px;
+    font-weight: 400;
+    line-height: 18px;
+    color: #454C53;
+  }
+
+  /* 버그 수정 */
+  .bug-item {
+    display: flex;
+    gap: 8px;
+    align-items: flex-start;
+    padding: 5px 0;
+    font-size: 14px;
+    line-height: 22px;
+    color: #5F666D;
+  }
+  .bug-item::before {
+    content: "•";
+    color: #9299A0;
+    flex-shrink: 0;
+  }
+
+  /* 영향 범위 / 전달사항 */
+  .note-text {
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 22px;
+    color: #5F666D;
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <!-- 헤더 -->
+  <div class="header">
+    <div class="header-meta">
+      <span class="badge">업데이트</span>
+      <span class="header-date">{YYYY년 MM월 DD일}</span>
+    </div>
+    <div class="header-title">{프로젝트 이름}</div>
+    <div class="header-summary">{한 줄 요약}</div>
+  </div>
+
+  <!-- 신규 기능 (해당 없으면 섹션 전체 제거) -->
+  <div class="section">
+    <div class="section-label">🆕 &nbsp;신규 기능</div>
+    <!-- 기능 항목 반복 -->
+    <div class="feature-item">
+      <div class="feature-name">{기능명}</div>
+      <div class="feature-desc">{비개발자도 이해할 수 있는 설명}</div>
+      <!-- 스크린샷 있을 때만 포함, 없으면 img 태그 제거 -->
+      <img class="feature-img" src="{이미지 경로}" alt="{기능명}">
+    </div>
+  </div>
+
+  <!-- 변경사항 (해당 없으면 섹션 전체 제거) -->
+  <div class="section">
+    <div class="section-label">✏️ &nbsp;변경사항</div>
+    <!-- 변경 항목 반복 -->
+    <div class="change-item">
+      <div class="change-name">{항목명}</div>
+      <div class="diff">
+        <div class="diff-box before">
+          <div class="diff-label">BEFORE</div>
+          <div class="diff-text">{변경 전 내용}</div>
+        </div>
+        <div class="diff-box after">
+          <div class="diff-label">AFTER</div>
+          <div class="diff-text">{변경 후 내용}</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 버그 수정 (해당 없으면 섹션 전체 제거) -->
+  <div class="section">
+    <div class="section-label">🐛 &nbsp;버그 수정</div>
+    <!-- 항목 반복 -->
+    <div class="bug-item">{수정 내용}</div>
+  </div>
+
+  <!-- 영향 범위 (없으면 섹션 전체 제거) -->
+  <div class="section">
+    <div class="section-label">📢 &nbsp;영향 범위</div>
+    <div class="note-text">{영향 범위 내용}</div>
+  </div>
+
+  <!-- 전달사항 (없으면 섹션 전체 제거) -->
+  <div class="section">
+    <div class="section-label">💬 &nbsp;전달사항</div>
+    <div class="note-text">{전달사항 내용}</div>
+  </div>
+
+</div>
+</body>
+</html>

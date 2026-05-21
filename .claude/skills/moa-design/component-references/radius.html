@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" href="../colors_and_type.css">
+<style>
+  html, body { margin: 0; padding: 0; background: var(--alias-color-background-normal); }
+  .card { width: 700px; box-sizing: border-box; padding: 24px 28px; }
+  .row { display: flex; gap: 12px; align-items: center; }
+  .col { display: flex; flex-direction: column; gap: 8px; }
+  .swatch { display: flex; flex-direction: column; gap: 8px; }
+  .chip {
+    width: 88px; height: 88px; border-radius: 12px;
+    box-shadow: inset 0 0 0 1px rgba(0,0,0,.04);
+  }
+  .chip.sm { width: 64px; height: 64px; border-radius: 10px; }
+  .chip-meta { display: flex; flex-direction: column; gap: 2px; }
+  .chip-name { font-size: 13px; font-weight: 600; color: var(--alias-color-label-normal); letter-spacing: 0.01em; }
+  .chip-val  { font-size: 11px; font-weight: 500; color: var(--alias-color-label-alternative); font-feature-settings: "tnum"; letter-spacing: 0.02em; }
+  
+  .row { display: flex; gap: 16px; flex-wrap: wrap; padding: 4px 0; }
+  .item { display: flex; flex-direction: column; align-items: center; gap: 8px; }
+  .box { width: 64px; height: 64px; background: var(--alias-color-primary-normal); }
+  .px { font: 500 11px/14px var(--font-sans); letter-spacing: 0.02em; color: var(--alias-color-label-alternative); font-feature-settings: "tnum"; }
+
+</style>
+</head>
+<body>
+<div class="card">
+<div class="row">
+  <div class="item"><div class="box" style="border-radius:8px"></div><div class="px">8</div></div>
+  <div class="item"><div class="box" style="border-radius:12px"></div><div class="px">12</div></div>
+  <div class="item"><div class="box" style="border-radius:16px"></div><div class="px">16</div></div>
+  <div class="item"><div class="box" style="border-radius:20px"></div><div class="px">20</div></div>
+  <div class="item"><div class="box" style="border-radius:24px"></div><div class="px">24</div></div>
+  <div class="item"><div class="box" style="border-radius:28px"></div><div class="px">28</div></div>
+  <div class="item"><div class="box" style="border-radius:32px"></div><div class="px">32</div></div>
+  <div class="item"><div class="box" style="border-radius:36px"></div><div class="px">36</div></div>
+  <div class="item"><div class="box" style="border-radius:40px"></div><div class="px">40</div></div>
+  <div class="item"><div class="box" style="border-radius:9999px"></div><div class="px">full</div></div>
+</div>
+</div></body></html>

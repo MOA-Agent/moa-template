@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" href="../colors_and_type.css">
+<style>
+  html, body { margin: 0; padding: 0; background: var(--alias-color-background-normal); }
+  .card { width: 700px; box-sizing: border-box; padding: 24px 28px; }
+  .section-title { font: 500 11px/14px var(--font-sans); letter-spacing: 0.02em; color: var(--alias-color-label-alternative); margin-bottom: 12px; text-transform: uppercase; }
+  .row { display: flex; gap: 10px; flex-wrap: wrap; align-items: center; }
+  /* TAG / CHIP — base capsule */
+  .tag {
+    display: inline-flex; align-items: center; gap: 4px;
+    border-radius: 40px;
+    font-family: var(--font-sans);
+    line-height: 1;
+    white-space: nowrap;
+  }
+  .tag.sm { padding: 4px 10px; font-size: 12px; font-weight: 500; letter-spacing: 0.02em; line-height: 16px; height: 24px; box-sizing: border-box; }
+  .tag.md { padding: 4px 12px; font-size: 14px; font-weight: 500; letter-spacing: 0.01em; line-height: 22px; height: 30px; box-sizing: border-box; }
+  .dot { width: 12px; height: 12px; border-radius: 9999px; background: currentColor; opacity: .9; }
+  
+  .group { display: flex; gap: 64px; padding: 16px 8px 32px; align-items: flex-end; }
+  .stage { display: flex; flex-direction: column; align-items: center; gap: 40px; position: relative; }
+  .tt {
+    background: rgba(24,26,27,.6); color: #fff;
+    border-radius: 4px; padding: 4px 10px;
+    font: 500 13px/18px var(--font-sans); letter-spacing: 0.02em;
+    position: relative;
+  }
+  .tt.white { background: #fff; color: #181A1B; box-shadow: var(--alias-style-shadow-strong); }
+  .tt::after {
+    content: ""; position: absolute; left: 50%; bottom: -5px; transform: translateX(-50%) rotate(45deg);
+    width: 8px; height: 8px; background: inherit;
+  }
+  .anchor {
+    width: 80px; height: 32px; border-radius: 8px; background: #F1F2F3;
+    font: 500 13px/32px var(--font-sans); color: var(--alias-color-label-neutral); text-align: center;
+  }
+  .lbl { font: 500 11px/14px var(--font-sans); letter-spacing: 0.02em; color: var(--alias-color-label-alternative); text-transform: uppercase; }
+
+</style>
+</head>
+<body>
+<div class="card">
+<div class="group">
+  <div class="stage">
+    <div class="tt">Tooltip text</div>
+    <div class="anchor">target</div>
+    <div class="lbl">default · dark</div>
+  </div>
+  <div class="stage">
+    <div class="tt white">Tooltip text</div>
+    <div class="anchor">target</div>
+    <div class="lbl">white</div>
+  </div>
+</div>
+</div></body></html>

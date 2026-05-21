@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" href="../colors_and_type.css">
+<style>
+  html, body { margin: 0; padding: 0; background: var(--alias-color-background-normal); }
+  .card { width: 700px; box-sizing: border-box; padding: 24px 28px; }
+  .section-title { font: 500 11px/14px var(--font-sans); letter-spacing: 0.02em; color: var(--alias-color-label-alternative); margin-bottom: 12px; text-transform: uppercase; }
+  .row { display: flex; gap: 10px; flex-wrap: wrap; align-items: center; }
+  /* TAG / CHIP — base capsule */
+  .tag {
+    display: inline-flex; align-items: center; gap: 4px;
+    border-radius: 40px;
+    font-family: var(--font-sans);
+    line-height: 1;
+    white-space: nowrap;
+  }
+  .tag.sm { padding: 4px 10px; font-size: 12px; font-weight: 500; letter-spacing: 0.02em; line-height: 16px; height: 24px; box-sizing: border-box; }
+  .tag.md { padding: 4px 12px; font-size: 14px; font-weight: 500; letter-spacing: 0.01em; line-height: 22px; height: 30px; box-sizing: border-box; }
+  .dot { width: 12px; height: 12px; border-radius: 9999px; background: currentColor; opacity: .9; }
+  
+  .group { display: flex; flex-direction: column; gap: 14px; }
+
+</style>
+</head>
+<body>
+<div class="card">
+<div class="group">
+  <div class="section-title">Tinted · medium</div>
+  <div class="row">
+    <span class="tag md" style="background:#CCE0FF;color:#0062FF">Primary</span>
+    <span class="tag md" style="background:#FFEBF5;color:#FF5CAF">Pink</span>
+    <span class="tag md" style="background:#FEEBE6;color:#FB6C4B">Orange</span>
+    <span class="tag md" style="background:#F7FCE8;color:#7AAA1F">Lime</span>
+    <span class="tag md" style="background:#E8FCFA;color:#0FB7A4">Cyan</span>
+    <span class="tag md" style="background:#E5F9FF;color:#0AA3D6">Skyblue</span>
+    <span class="tag md" style="background:#F5E6FF;color:#CC7BFE">Purple</span>
+  </div>
+  <div class="section-title">Tinted · small</div>
+  <div class="row">
+    <span class="tag sm" style="background:#CCE0FF;color:#0062FF">label</span>
+    <span class="tag sm" style="background:#FFEBF5;color:#FF5CAF">label</span>
+    <span class="tag sm" style="background:#FEEBE6;color:#FB6C4B">label</span>
+    <span class="tag sm" style="background:#F7FCE8;color:#7AAA1F">label</span>
+    <span class="tag sm" style="background:#E8FCFA;color:#0FB7A4">label</span>
+    <span class="tag sm" style="background:#E5F9FF;color:#0AA3D6">label</span>
+    <span class="tag sm" style="background:#F5E6FF;color:#CC7BFE">label</span>
+  </div>
+</div>
+</div></body></html>

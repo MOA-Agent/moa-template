@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" href="../colors_and_type.css">
+<style>
+  html, body { margin: 0; padding: 0; background: var(--alias-color-background-normal); }
+  .card { width: 700px; box-sizing: border-box; padding: 24px 28px; }
+  .row { display: flex; gap: 12px; align-items: center; }
+  .col { display: flex; flex-direction: column; gap: 8px; }
+  .swatch { display: flex; flex-direction: column; gap: 8px; }
+  .chip {
+    width: 88px; height: 88px; border-radius: 12px;
+    box-shadow: inset 0 0 0 1px rgba(0,0,0,.04);
+  }
+  .chip.sm { width: 64px; height: 64px; border-radius: 10px; }
+  .chip-meta { display: flex; flex-direction: column; gap: 2px; }
+  .chip-name { font-size: 13px; font-weight: 600; color: var(--alias-color-label-normal); letter-spacing: 0.01em; }
+  .chip-val  { font-size: 11px; font-weight: 500; color: var(--alias-color-label-alternative); font-feature-settings: "tnum"; letter-spacing: 0.02em; }
+  
+  .row { display: flex; gap: 14px; flex-wrap: wrap; }
+  .item { display: flex; flex-direction: column; gap: 8px; width: calc((100% - 70px) / 6); }
+  .chip { width: 100%; aspect-ratio: 1/1; border-radius: 12px; box-shadow: inset 0 0 0 1px rgba(0,0,0,.04); }
+  .chip-name { font-size: 12px; }
+  .chip-val { font-size: 10px; }
+
+</style>
+</head>
+<body>
+<div class="card">
+<div class="row">
+  <div class="item"><div class="chip" style="background:#181A1B"></div><div class="chip-meta"><span class="chip-name">Normal</span><span class="chip-val">#181A1B</span></div></div>
+  <div class="item"><div class="chip" style="background:#000000"></div><div class="chip-meta"><span class="chip-name">Strong</span><span class="chip-val">#000</span></div></div>
+  <div class="item"><div class="chip" style="background:#5F666D"></div><div class="chip-meta"><span class="chip-name">Neutral</span><span class="chip-val">#5F666D</span></div></div>
+  <div class="item"><div class="chip" style="background:rgba(71,76,82,.6)"></div><div class="chip-meta"><span class="chip-name">Alternative</span><span class="chip-val">474C52/60%</span></div></div>
+  <div class="item"><div class="chip" style="background:rgba(71,76,82,.35)"></div><div class="chip-meta"><span class="chip-name">Assistive</span><span class="chip-val">474C52/35%</span></div></div>
+  <div class="item"><div class="chip" style="background:rgba(71,76,82,.16)"></div><div class="chip-meta"><span class="chip-name">Disabled</span><span class="chip-val">474C52/16%</span></div></div>
+</div>
+</div></body></html>

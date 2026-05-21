@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" href="../colors_and_type.css">
+<style>
+  html, body { margin: 0; padding: 0; background: var(--alias-color-background-normal); }
+  .card { width: 700px; box-sizing: border-box; padding: 24px 28px; }
+  .row { display: flex; gap: 12px; align-items: center; }
+  .col { display: flex; flex-direction: column; gap: 8px; }
+  .swatch { display: flex; flex-direction: column; gap: 8px; }
+  .chip {
+    width: 88px; height: 88px; border-radius: 12px;
+    box-shadow: inset 0 0 0 1px rgba(0,0,0,.04);
+  }
+  .chip.sm { width: 64px; height: 64px; border-radius: 10px; }
+  .chip-meta { display: flex; flex-direction: column; gap: 2px; }
+  .chip-name { font-size: 13px; font-weight: 600; color: var(--alias-color-label-normal); letter-spacing: 0.01em; }
+  .chip-val  { font-size: 11px; font-weight: 500; color: var(--alias-color-label-alternative); font-feature-settings: "tnum"; letter-spacing: 0.02em; }
+  
+  table { border-collapse: collapse; width: 100%; font-family: var(--font-sans); }
+  th, td { text-align: left; padding: 6px 12px 6px 0; font-size: 13px; color: var(--alias-color-label-normal); font-variant-numeric: tabular-nums; letter-spacing: 0.01em; }
+  th { font-weight: 700; color: var(--alias-color-label-neutral); border-bottom: 1px solid var(--alias-color-line-strong); padding-bottom: 8px; font-size: 12px; text-transform: uppercase; }
+  td { border-bottom: 1px dashed var(--alias-color-line-normal); }
+  .token { color: var(--mile-pink-50); font-weight: 600; }
+
+</style>
+</head>
+<body>
+<div class="card">
+<table>
+  <thead><tr><th>Token</th><th>Size</th><th>Line</th><th>LS</th><th>Weight</th></tr></thead>
+  <tbody>
+    <tr><td class="token">alias.font.display.01</td><td>80</td><td>80</td><td>-.03</td><td>Bold</td></tr>
+    <tr><td class="token">alias.font.title.01</td><td>36</td><td>48</td><td>-.02</td><td>Bold</td></tr>
+    <tr><td class="token">alias.font.heading.01</td><td>22</td><td>30</td><td>-.01</td><td>Bold</td></tr>
+    <tr><td class="token">alias.font.headline.01</td><td>18</td><td>26</td><td>-.01</td><td>SemiBold</td></tr>
+    <tr><td class="token">alias.font.body.01</td><td>16</td><td>24</td><td>+.01</td><td>Medium</td></tr>
+    <tr><td class="token">alias.font.label.01</td><td>14</td><td>22</td><td>+.01</td><td>Medium</td></tr>
+    <tr><td class="token">alias.font.caption.01</td><td>12</td><td>16</td><td>+.02</td><td>Medium</td></tr>
+  </tbody>
+</table>
+</div></body></html>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" href="../colors_and_type.css">
+<style>
+  html, body { margin: 0; padding: 0; background: var(--alias-color-background-normal); }
+  .card { width: 700px; box-sizing: border-box; padding: 24px 28px; }
+  .section-title { font: 500 11px/14px var(--font-sans); letter-spacing: 0.02em; color: var(--alias-color-label-alternative); margin-bottom: 12px; text-transform: uppercase; }
+  .row { display: flex; gap: 10px; flex-wrap: wrap; align-items: center; }
+  /* TAG / CHIP — base capsule */
+  .tag {
+    display: inline-flex; align-items: center; gap: 4px;
+    border-radius: 40px;
+    font-family: var(--font-sans);
+    line-height: 1;
+    white-space: nowrap;
+  }
+  .tag.sm { padding: 4px 10px; font-size: 12px; font-weight: 500; letter-spacing: 0.02em; line-height: 16px; height: 24px; box-sizing: border-box; }
+  .tag.md { padding: 4px 12px; font-size: 14px; font-weight: 500; letter-spacing: 0.01em; line-height: 22px; height: 30px; box-sizing: border-box; }
+  .dot { width: 12px; height: 12px; border-radius: 9999px; background: currentColor; opacity: .9; }
+  
+  .group { display: flex; gap: 40px; align-items: center; justify-content: flex-start; padding: 20px 0; }
+  .item { display: flex; flex-direction: column; gap: 12px; align-items: center; }
+  .spinner {
+    border-radius: 50%;
+    border: 3px solid #E4E5E7;
+    border-top-color: var(--alias-color-primary-normal);
+    animation: spin 0.9s linear infinite;
+  }
+  .spinner.s16 { width: 16px; height: 16px; border-width: 2px; }
+  .spinner.s24 { width: 24px; height: 24px; }
+  .spinner.s32 { width: 32px; height: 32px; }
+  .spinner.s48 { width: 48px; height: 48px; border-width: 4px; }
+  @keyframes spin { to { transform: rotate(360deg); } }
+  .lbl { font: 500 11px/14px var(--font-sans); letter-spacing: 0.02em; color: var(--alias-color-label-alternative); }
+
+</style>
+</head>
+<body>
+<div class="card">
+<div class="group">
+  <div class="item"><div class="spinner s16"></div><div class="lbl">16</div></div>
+  <div class="item"><div class="spinner s24"></div><div class="lbl">24</div></div>
+  <div class="item"><div class="spinner s32"></div><div class="lbl">32</div></div>
+  <div class="item"><div class="spinner s48"></div><div class="lbl">48</div></div>
+</div>
+</div></body></html>

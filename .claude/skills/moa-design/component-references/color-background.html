@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" href="../colors_and_type.css">
+<style>
+  html, body { margin: 0; padding: 0; background: var(--alias-color-background-normal); }
+  .card { width: 700px; box-sizing: border-box; padding: 24px 28px; }
+  .row { display: flex; gap: 12px; align-items: center; }
+  .col { display: flex; flex-direction: column; gap: 8px; }
+  .swatch { display: flex; flex-direction: column; gap: 8px; }
+  .chip {
+    width: 88px; height: 88px; border-radius: 12px;
+    box-shadow: inset 0 0 0 1px rgba(0,0,0,.04);
+  }
+  .chip.sm { width: 64px; height: 64px; border-radius: 10px; }
+  .chip-meta { display: flex; flex-direction: column; gap: 2px; }
+  .chip-name { font-size: 13px; font-weight: 600; color: var(--alias-color-label-normal); letter-spacing: 0.01em; }
+  .chip-val  { font-size: 11px; font-weight: 500; color: var(--alias-color-label-alternative); font-feature-settings: "tnum"; letter-spacing: 0.02em; }
+  
+  .section-title { font: 700 13px/16px var(--font-sans); letter-spacing: 0.02em; color: var(--alias-color-label-alternative); margin-bottom: 12px; text-transform: uppercase; }
+  .row { display: flex; gap: 16px; margin-bottom: 18px; }
+  .item { display: flex; flex-direction: column; gap: 8px; width: 140px; }
+  .chip { width: 100%; height: 70px; border-radius: 12px; box-shadow: inset 0 0 0 1px rgba(0,0,0,.06); }
+  .chip-name { font-size: 12px; }
+  .chip-val { font-size: 10px; }
+
+</style>
+</head>
+<body>
+<div class="card">
+<div class="section-title">Background</div>
+<div class="row">
+  <div class="item"><div class="chip" style="background:#FFFFFF"></div><div class="chip-meta"><span class="chip-name">Normal</span><span class="chip-val">#FFFFFF</span></div></div>
+  <div class="item"><div class="chip" style="background:#FAFAFA"></div><div class="chip-meta"><span class="chip-name">Alternative</span><span class="chip-val">#FAFAFA</span></div></div>
+</div>
+<div class="section-title">Line</div>
+<div class="row">
+  <div class="item"><div class="chip" style="background:#F1F2F3"></div><div class="chip-meta"><span class="chip-name">Normal</span><span class="chip-val">#F1F2F3</span></div></div>
+  <div class="item"><div class="chip" style="background:#D6D9DB"></div><div class="chip-meta"><span class="chip-name">Strong</span><span class="chip-val">#D6D9DB</span></div></div>
+  <div class="item"><div class="chip" style="background:#FAFAFA"></div><div class="chip-meta"><span class="chip-name">Alternative</span><span class="chip-val">#FAFAFA</span></div></div>
+</div>
+</div></body></html>

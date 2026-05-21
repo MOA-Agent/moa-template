@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" href="../colors_and_type.css">
+<style>
+  html, body { margin: 0; padding: 0; background: var(--alias-color-background-normal); }
+  .card { width: 700px; box-sizing: border-box; padding: 24px 28px; }
+  .section-title { font: 500 11px/14px var(--font-sans); letter-spacing: 0.02em; color: var(--alias-color-label-alternative); margin-bottom: 12px; text-transform: uppercase; }
+  .row { display: flex; gap: 10px; flex-wrap: wrap; align-items: center; }
+  /* TAG / CHIP — base capsule */
+  .tag {
+    display: inline-flex; align-items: center; gap: 4px;
+    border-radius: 40px;
+    font-family: var(--font-sans);
+    line-height: 1;
+    white-space: nowrap;
+  }
+  .tag.sm { padding: 4px 10px; font-size: 12px; font-weight: 500; letter-spacing: 0.02em; line-height: 16px; height: 24px; box-sizing: border-box; }
+  .tag.md { padding: 4px 12px; font-size: 14px; font-weight: 500; letter-spacing: 0.01em; line-height: 22px; height: 30px; box-sizing: border-box; }
+  .dot { width: 12px; height: 12px; border-radius: 9999px; background: currentColor; opacity: .9; }
+  
+  .group { display: flex; flex-direction: column; gap: 14px; }
+
+</style>
+</head>
+<body>
+<div class="card">
+<div class="group">
+  <div class="section-title">Filled · medium</div>
+  <div class="row">
+    <span class="tag md" style="background:#3885FF;color:#fff"><span class="dot"></span>Primary</span>
+    <span class="tag md" style="background:#FF5CAF;color:#fff"><span class="dot"></span>Pink</span>
+    <span class="tag md" style="background:#FB6C4B;color:#fff"><span class="dot"></span>Orange</span>
+    <span class="tag md" style="background:#C0EB47;color:#1B1D1F"><span class="dot"></span>Lime</span>
+    <span class="tag md" style="background:#19E6CD;color:#1B1D1F"><span class="dot"></span>Cyan</span>
+    <span class="tag md" style="background:#66DAFF;color:#1B1D1F"><span class="dot"></span>Skyblue</span>
+    <span class="tag md" style="background:#B135FD;color:#fff"><span class="dot"></span>Purple</span>
+  </div>
+  <div class="section-title">Filled · small</div>
+  <div class="row">
+    <span class="tag sm" style="background:#3885FF;color:#fff">label</span>
+    <span class="tag sm" style="background:#FF5CAF;color:#fff">label</span>
+    <span class="tag sm" style="background:#FB6C4B;color:#fff">label</span>
+    <span class="tag sm" style="background:#C0EB47;color:#1B1D1F">label</span>
+    <span class="tag sm" style="background:#19E6CD;color:#1B1D1F">label</span>
+    <span class="tag sm" style="background:#66DAFF;color:#1B1D1F">label</span>
+    <span class="tag sm" style="background:#B135FD;color:#fff">label</span>
+  </div>
+</div>
+</div></body></html>

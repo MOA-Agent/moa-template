@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" href="../colors_and_type.css">
+<style>
+  html, body { margin: 0; padding: 0; background: var(--alias-color-background-normal); }
+  .card { width: 700px; box-sizing: border-box; padding: 24px 28px; }
+  .row { display: flex; gap: 12px; align-items: center; }
+  .col { display: flex; flex-direction: column; gap: 8px; }
+  .swatch { display: flex; flex-direction: column; gap: 8px; }
+  .chip {
+    width: 88px; height: 88px; border-radius: 12px;
+    box-shadow: inset 0 0 0 1px rgba(0,0,0,.04);
+  }
+  .chip.sm { width: 64px; height: 64px; border-radius: 10px; }
+  .chip-meta { display: flex; flex-direction: column; gap: 2px; }
+  .chip-name { font-size: 13px; font-weight: 600; color: var(--alias-color-label-normal); letter-spacing: 0.01em; }
+  .chip-val  { font-size: 11px; font-weight: 500; color: var(--alias-color-label-alternative); font-feature-settings: "tnum"; letter-spacing: 0.02em; }
+  
+  .row { display: flex; align-items: baseline; gap: 20px; padding: 2px 0; }
+  .label { font: 500 11px/14px var(--font-sans); letter-spacing: 0.02em; color: var(--alias-color-label-alternative); width: 100px; flex-shrink: 0; font-feature-settings: "tnum"; }
+  .sample { color: var(--alias-color-label-normal); }
+
+</style>
+</head>
+<body>
+<div class="card">
+<div class="row"><div class="label">Headline 1<br>18 · 26 · -.01</div><div class="sample t-headline1">Headline 1 — 600 weight</div></div>
+<div class="row"><div class="label">Headline 2<br>17 · 24 · 0</div><div class="sample t-headline2">Headline 2 — 600 weight</div></div>
+<div class="row"><div class="label">Body 1<br>16 · 24 · +.01</div><div class="sample t-body1">Body 1 default · 500 medium · 시맨틱 컬러</div></div>
+<div class="row"><div class="label">Body 2<br>15 · 22 · +.01</div><div class="sample t-body2">Body 2 default · 시맨틱 토큰을 사용합니다</div></div>
+<div class="row"><div class="label">Label 1<br>14 · 22 · +.01</div><div class="sample t-label1">Label 1 · button &amp; small text</div></div>
+<div class="row"><div class="label">Label 2<br>13 · 18 · +.02</div><div class="sample t-label2">Label 2 · meta &amp; sublabels</div></div>
+<div class="row"><div class="label">Caption 1<br>12 · 16 · +.02</div><div class="sample t-caption1">Caption 1 · tags &amp; chips</div></div>
+<div class="row"><div class="label">Caption 2<br>11 · 14 · +.02</div><div class="sample t-caption2">Caption 2 · smallest legal</div></div>
+</div></body></html>

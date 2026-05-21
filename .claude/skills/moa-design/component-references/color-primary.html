@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" href="../colors_and_type.css">
+<style>
+  html, body { margin: 0; padding: 0; background: var(--alias-color-background-normal); }
+  .card { width: 700px; box-sizing: border-box; padding: 24px 28px; }
+  .row { display: flex; gap: 12px; align-items: center; }
+  .col { display: flex; flex-direction: column; gap: 8px; }
+  .swatch { display: flex; flex-direction: column; gap: 8px; }
+  .chip {
+    width: 88px; height: 88px; border-radius: 12px;
+    box-shadow: inset 0 0 0 1px rgba(0,0,0,.04);
+  }
+  .chip.sm { width: 64px; height: 64px; border-radius: 10px; }
+  .chip-meta { display: flex; flex-direction: column; gap: 2px; }
+  .chip-name { font-size: 13px; font-weight: 600; color: var(--alias-color-label-normal); letter-spacing: 0.01em; }
+  .chip-val  { font-size: 11px; font-weight: 500; color: var(--alias-color-label-alternative); font-feature-settings: "tnum"; letter-spacing: 0.02em; }
+  
+  .grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+  .item { display: flex; flex-direction: column; gap: 10px; }
+  .chip { width: 100%; height: 90px; border-radius: 12px; }
+
+</style>
+</head>
+<body>
+<div class="card">
+<div class="grid">
+  <div class="item"><div class="chip" style="background: #3885FF"></div><div class="chip-meta"><span class="chip-name">primary · normal</span><span class="chip-val">#3885FF</span></div></div>
+  <div class="item"><div class="chip" style="background: #0062FF"></div><div class="chip-meta"><span class="chip-name">primary · strong</span><span class="chip-val">#0062FF</span></div></div>
+  <div class="item"><div class="chip" style="background: #004FCC"></div><div class="chip-meta"><span class="chip-name">primary · heavy</span><span class="chip-val">#004FCC</span></div></div>
+</div>
+</div></body></html>

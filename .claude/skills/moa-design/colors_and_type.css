@@ -1,0 +1,234 @@
+/* ──────────────────────────────────────────────────────────────────
+   Mile Design System — Color & Typography Tokens
+   Source: Mile Design System_Web (Figma), pages /Color---Semantic, /Typography
+   ────────────────────────────────────────────────────────────────── */
+
+/* Pretendard — self-hosted variable font (uploaded) */
+@font-face {
+  font-family: "Pretendard Variable";
+  font-weight: 45 920;
+  font-style: normal;
+  font-display: swap;
+  src: url("fonts/PretendardVariable.woff2") format("woff2-variations");
+}
+
+:root {
+  /* ─────────────────────────────────────────────────────────────
+     PRIMITIVE (GLOBAL) COLORS
+     ───────────────────────────────────────────────────────────── */
+
+  /* Neutral / gray scale (extracted from semantic + palette usage) */
+  --mile-white:           #FFFFFF;
+  --mile-black:           #000000;
+  --mile-ink-900:         #181A1B;   /* text/strong-90 default */
+  --mile-ink-800:         #1B1D1F;
+  --mile-ink-700:         #232325;
+  --mile-gray-700:        #454C53;
+  --mile-gray-600:        #474C52;   /* primary body text */
+  --mile-gray-500:        #5F666D;
+  --mile-gray-400:        #9299A0;
+  --mile-gray-300:        #ADB2B8;
+  --mile-gray-200:        #D6D9DB;
+  --mile-gray-150:        #E4E5E7;
+  --mile-gray-100:        #F1F2F3;
+  --mile-gray-50:         #FAFAFA;
+
+  /* Brand blue (primary) — value scale */
+  --mile-blue-10:         #CCE0FF;   /* light fills */
+  --mile-blue-50:         #3885FF;   /* primary.normal */
+  --mile-blue-60:         #0062FF;   /* primary.strong */
+  --mile-blue-70:         #004FCC;   /* primary.heavy */
+
+  /* Accent / extended palette */
+  --mile-pink-50:         #FF5CAF;
+  --mile-pink-light:      #FFEBF5;
+  --mile-pink-soft:       #FF80C1;
+  --mile-purple-50:       #B135FD;
+  --mile-purple-light:    #F5E6FF;
+  --mile-purple-text:     #CC7BFE;
+  --mile-orange-50:       #FB6C4B;
+  --mile-orange-soft:     #FC8D73;
+  --mile-orange-light:    #FEEBE6;
+  --mile-yellow-50:       #FFD666;
+  --mile-yellow-light:    rgba(255, 248, 229, 0.6);
+  --mile-lime-50:         #C0EB47;
+  --mile-lime-light:      #F7FCE8;
+  --mile-cyan-50:         #47EBD7;
+  --mile-cyan-light:      #E8FCFA;
+  --mile-cyan-mid:        #19E6CD;
+  --mile-skyblue-50:      #33CEFF;
+  --mile-skyblue-mid:     #66DAFF;
+  --mile-skyblue-light:   #E5F9FF;
+
+  /* Status colors */
+  --mile-positive:        #00A661;
+  --mile-cautionary:      #FFC933;
+  --mile-negative:        #FF3E3E;
+
+  /* Design-system meta (dashed wrapper accent used for component plates) */
+  --mile-spec-purple:     #9747FF;
+
+  /* ─────────────────────────────────────────────────────────────
+     SEMANTIC ALIASES
+     alias.color.{role}.{context}
+     ───────────────────────────────────────────────────────────── */
+
+  /* Primary */
+  --alias-color-primary-normal:     var(--mile-blue-50);
+  --alias-color-primary-strong:     var(--mile-blue-60);
+  --alias-color-primary-heavy:      var(--mile-blue-70);
+
+  /* Label (text) */
+  --alias-color-label-normal:       var(--mile-ink-900);
+  --alias-color-label-strong:       var(--mile-black);
+  --alias-color-label-neutral:      var(--mile-gray-500);
+  --alias-color-label-alternative:  rgba(71, 76, 82, 0.6);
+  --alias-color-label-assistive:    rgba(71, 76, 82, 0.35);
+  --alias-color-label-disabled:     rgba(71, 76, 82, 0.16);
+
+  /* Background */
+  --alias-color-background-normal:        var(--mile-white);
+  --alias-color-background-alternative:   var(--mile-gray-50);
+  --alias-color-background-elevated:      var(--mile-white);
+  --alias-color-background-elevated-alt:  var(--mile-gray-50);
+
+  /* Line / border */
+  --alias-color-line-normal:        var(--mile-gray-100);
+  --alias-color-line-strong:        var(--mile-gray-200);
+  --alias-color-line-alternative:   var(--mile-gray-50);
+
+  /* Interaction */
+  --alias-color-interaction-inactive: var(--mile-gray-150);
+  --alias-color-interaction-disabled: var(--mile-gray-100);
+
+  /* Status */
+  --alias-color-status-positive:    var(--mile-positive);
+  --alias-color-status-cautionary:  var(--mile-cautionary);
+  --alias-color-status-negative:    var(--mile-negative);
+
+  /* Component — fills */
+  --alias-color-fill-normal:        rgba(146, 153, 160, 0.12);
+  --alias-color-fill-strong:        rgba(146, 153, 160, 0.22);
+  --alias-color-fill-alternative:   rgba(146, 153, 160, 0.08);
+
+  /* Component — material overlays */
+  --alias-color-material-dimmer:    rgba(0, 0, 0, 0.45);
+  --alias-color-material-tooltip:   rgba(24, 26, 27, 0.6);
+
+  /* ─────────────────────────────────────────────────────────────
+     SHADOWS
+     Three named elevations from /Shadow
+     ───────────────────────────────────────────────────────────── */
+  --alias-style-shadow-normal: 0 0 1px rgba(0,0,0,.08), 0 1px 2px rgba(0,0,0,.12);
+  --alias-style-shadow-strong: 0 2px 12px rgba(0,0,0,.08), 0 1px 2px rgba(0,0,0,.06);
+  --alias-style-shadow-heavy:  0 2px 20px rgba(0,0,0,.08), 0 8px 28px rgba(0,0,0,.10);
+
+  /* ─────────────────────────────────────────────────────────────
+     RADIUS (4-step multiplier)
+     ───────────────────────────────────────────────────────────── */
+  --radius-4:    4px;
+  --radius-8:    8px;
+  --radius-12:   12px;
+  --radius-16:   16px;
+  --radius-20:   20px;
+  --radius-24:   24px;
+  --radius-28:   28px;
+  --radius-32:   32px;
+  --radius-36:   36px;
+  --radius-40:   40px;
+  --radius-48:   48px;
+  --radius-full: 9999px;
+
+  /* ─────────────────────────────────────────────────────────────
+     SPACING (4-step scale, "기준" = base, .5/2 only when unavoidable)
+     ───────────────────────────────────────────────────────────── */
+  --space-0_5: 2px;     /* discouraged */
+  --space-1:   4px;     /* base unit */
+  --space-2:   8px;
+  --space-3:   12px;
+  --space-4:   16px;
+  --space-5:   20px;
+  --space-6:   24px;
+  --space-8:   32px;
+  --space-10:  40px;
+  --space-12:  48px;
+  --space-16:  64px;
+  --space-20:  80px;
+  --space-30:  120px;
+
+  /* ─────────────────────────────────────────────────────────────
+     TYPOGRAPHY — font family
+     ───────────────────────────────────────────────────────────── */
+  --font-sans: "Pretendard Variable", "Pretendard", -apple-system, BlinkMacSystemFont,
+               "Apple SD Gothic Neo", "Noto Sans KR", system-ui, sans-serif;
+
+  /* Type scale — sizes / line heights / letter spacing
+     Naming mirrors Figma: display, title, heading, headline, body, label, caption */
+  --type-display1-size: 80px;  --type-display1-lh: 80px;   --type-display1-ls: -0.03em;
+  --type-display2-size: 56px;  --type-display2-lh: 72px;   --type-display2-ls: -0.03em;
+  --type-display3-size: 42px;  --type-display3-lh: 56px;   --type-display3-ls: -0.03em;
+
+  --type-title1-size:   36px;  --type-title1-lh:   48px;   --type-title1-ls:   -0.02em;
+  --type-title2-size:   28px;  --type-title2-lh:   38px;   --type-title2-ls:   -0.02em;
+  --type-title3-size:   24px;  --type-title3-lh:   32px;   --type-title3-ls:   -0.02em;
+
+  --type-heading1-size: 22px;  --type-heading1-lh: 30px;   --type-heading1-ls: -0.01em;
+  --type-heading2-size: 20px;  --type-heading2-lh: 28px;   --type-heading2-ls: -0.01em;
+
+  --type-headline1-size:18px;  --type-headline1-lh:26px;   --type-headline1-ls:-0.01em;
+  --type-headline2-size:17px;  --type-headline2-lh:24px;   --type-headline2-ls: 0em;
+
+  --type-body1-size:    16px;  --type-body1-lh:    24px;   --type-body1-ls:    0.01em;
+  --type-body1long-lh:  28px;
+  --type-body2-size:    15px;  --type-body2-lh:    22px;   --type-body2-ls:    0.01em;
+  --type-body2long-lh:  26px;
+
+  --type-label1-size:   14px;  --type-label1-lh:   22px;   --type-label1-ls:   0.01em;
+  --type-label2-size:   13px;  --type-label2-lh:   18px;   --type-label2-ls:   0.02em;
+
+  --type-caption1-size: 12px;  --type-caption1-lh: 16px;   --type-caption1-ls: 0.02em;
+  --type-caption2-size: 11px;  --type-caption2-lh: 14px;   --type-caption2-ls: 0.02em;
+}
+
+/* ─────────────────────────────────────────────────────────────
+   SEMANTIC ELEMENT DEFAULTS
+   Use class names .t-* directly, or apply globally via html.
+   ───────────────────────────────────────────────────────────── */
+html, body {
+  font-family: var(--font-sans);
+  color: var(--alias-color-label-normal);
+  background: var(--alias-color-background-normal);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+.t-display1   { font-size: var(--type-display1-size);   line-height: var(--type-display1-lh);   letter-spacing: var(--type-display1-ls);   font-weight: 700; }
+.t-display2   { font-size: var(--type-display2-size);   line-height: var(--type-display2-lh);   letter-spacing: var(--type-display2-ls);   font-weight: 700; }
+.t-display3   { font-size: var(--type-display3-size);   line-height: var(--type-display3-lh);   letter-spacing: var(--type-display3-ls);   font-weight: 700; }
+
+.t-title1     { font-size: var(--type-title1-size);     line-height: var(--type-title1-lh);     letter-spacing: var(--type-title1-ls);     font-weight: 700; }
+.t-title2     { font-size: var(--type-title2-size);     line-height: var(--type-title2-lh);     letter-spacing: var(--type-title2-ls);     font-weight: 700; }
+.t-title3     { font-size: var(--type-title3-size);     line-height: var(--type-title3-lh);     letter-spacing: var(--type-title3-ls);     font-weight: 700; }
+
+.t-heading1   { font-size: var(--type-heading1-size);   line-height: var(--type-heading1-lh);   letter-spacing: var(--type-heading1-ls);   font-weight: 700; }
+.t-heading2   { font-size: var(--type-heading2-size);   line-height: var(--type-heading2-lh);   letter-spacing: var(--type-heading2-ls);   font-weight: 700; }
+
+.t-headline1  { font-size: var(--type-headline1-size);  line-height: var(--type-headline1-lh);  letter-spacing: var(--type-headline1-ls);  font-weight: 600; }
+.t-headline2  { font-size: var(--type-headline2-size);  line-height: var(--type-headline2-lh);  letter-spacing: var(--type-headline2-ls);  font-weight: 600; }
+
+.t-body1      { font-size: var(--type-body1-size);      line-height: var(--type-body1-lh);      letter-spacing: var(--type-body1-ls);      font-weight: 500; }
+.t-body1-long { font-size: var(--type-body1-size);      line-height: var(--type-body1long-lh);  letter-spacing: var(--type-body1-ls);      font-weight: 400; }
+.t-body2      { font-size: var(--type-body2-size);      line-height: var(--type-body2-lh);      letter-spacing: var(--type-body2-ls);      font-weight: 500; }
+.t-body2-long { font-size: var(--type-body2-size);      line-height: var(--type-body2long-lh);  letter-spacing: var(--type-body2-ls);      font-weight: 400; }
+
+.t-label1     { font-size: var(--type-label1-size);     line-height: var(--type-label1-lh);     letter-spacing: var(--type-label1-ls);     font-weight: 500; }
+.t-label2     { font-size: var(--type-label2-size);     line-height: var(--type-label2-lh);     letter-spacing: var(--type-label2-ls);     font-weight: 500; }
+
+.t-caption1   { font-size: var(--type-caption1-size);   line-height: var(--type-caption1-lh);   letter-spacing: var(--type-caption1-ls);   font-weight: 500; }
+.t-caption2   { font-size: var(--type-caption2-size);   line-height: var(--type-caption2-lh);   letter-spacing: var(--type-caption2-ls);   font-weight: 500; }
+
+/* Native element shortcuts (use these as a base — opt-in via class if needed) */
+.t-h1 { font: 700 var(--type-display2-size)/var(--type-display2-lh) var(--font-sans); letter-spacing: var(--type-display2-ls); }
+.t-h2 { font: 700 var(--type-title1-size)/var(--type-title1-lh) var(--font-sans); letter-spacing: var(--type-title1-ls); }
+.t-h3 { font: 700 var(--type-title3-size)/var(--type-title3-lh) var(--font-sans); letter-spacing: var(--type-title3-ls); }
+.t-p  { font: 400 var(--type-body1-size)/var(--type-body1long-lh) var(--font-sans); letter-spacing: var(--type-body1-ls); }
