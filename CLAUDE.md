@@ -17,14 +17,6 @@ Claude는 아래 트리거 조건에 해당하는 요청이 들어오면, 반드
 | "운영 배포해줘", "배포해줘", "deploy-prod" 등 운영 환경 배포 요청 | `.claude/skills/deploy-prod/SKILL.md` |
 | "공유 문서 만들어줘", "share-update" 등 업데이트 공유 요청 | `.claude/skills/share-update/SKILL.md` |
 
-## 배포 전 필수 규칙
-
-배포("배포", "deploy", "vercel deploy", "프로덕션 배포" 등) 요청이 들어오면, 반드시 아래 순서를 따른다:
-
-1. `.claude/skills/moa-security/SKILL.md`를 읽고 보안 점검을 먼저 실행한다.
-2. 보안 점검 결과에 실패(❌) 항목이 있으면 배포를 중단하고 사용자에게 조치를 요청한다.
-3. 모든 항목이 통과(✅) 또는 주의(⚠️)인 경우에만 배포를 진행한다.
-
 ## 기본 행동 규칙
 
 - 스킬 실행 중에는 스킬 파일의 지침을 우선 따른다.
