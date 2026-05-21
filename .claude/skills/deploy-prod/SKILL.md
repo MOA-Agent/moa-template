@@ -69,3 +69,7 @@ git push origin main
 ```
 | {오늘 날짜} | 운영 | {git config user.name} | {최근 커밋 메시지} |
 ```
+
+### 5. 문서 업데이트
+
+`.claude/skills/complete-task/SKILL.md`를 읽고 지침에 따라 문서 업데이트를 진행합니다.

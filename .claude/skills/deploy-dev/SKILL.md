@@ -75,3 +75,7 @@ git push origin {개발 브랜치명}
 ```
 | {오늘 날짜} | 개발 | {git config user.name} | {최근 커밋 메시지} |
 ```
+
+### 6. 문서 업데이트
+
+`.claude/skills/complete-task/SKILL.md`를 읽고 지침에 따라 문서 업데이트를 진행합니다.
