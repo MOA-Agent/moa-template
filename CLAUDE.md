@@ -25,6 +25,7 @@
 | complete-task | `complete-task/SKILL.md` | 작업이 끝난 후 git diff 기반으로 `docs/` 문서를 자동 업데이트할 때. |
 | share-update | `share-update/SKILL.md` | 배포 후 팀 내부 공유용 HTML 문서를 생성할 때. |
 | moa-readme | `moa-readme/SKILL.md` | README.md를 생성하거나 업데이트할 때. 모아나 위키봇이 최적으로 읽을 수 있는 구조로 작성한다. |
+| org-impact | `org-impact/SKILL.md` | MOA-agent 조직 레포들을 탐색해 공유 DB/API 의존성을 분석하고 크로스-레포 사이드이펙트를 진단할 때. API 수정·DB 스키마 변경 시 plan-feature에서 자동 호출된다. |
 
 ## 개발 작업 제한 규칙
 
