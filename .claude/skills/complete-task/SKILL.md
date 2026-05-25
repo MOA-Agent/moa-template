@@ -90,6 +90,11 @@ git diff origin/{브랜치명}@{1}..origin/{브랜치명} --name-only
 | 작업자 | {git config user.name} |
 ```
 
+### 6. README.md 업데이트
+
+`.claude/skills/moa-readme/SKILL.md`를 읽고 지침에 따라 `README.md`를 업데이트합니다.
+최신 코드와 docs/ 문서를 기반으로 파일 맵, 핵심 플로우, 주의사항 등을 채웁니다.
+
 ## 주의사항
 
 - 실제로 변경된 내용만 반영합니다. 추측으로 내용을 추가하지 않습니다.

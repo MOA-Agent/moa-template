@@ -2,39 +2,67 @@
 
 ## README.md
 
+L1/L2 응답으로 채울 수 있는 항목만 작성한다.
+파일 맵·핵심 플로우·주의사항은 코드가 생긴 후 `complete-task` 실행 시 `moa-readme` 스킬이 자동으로 채운다.
+
 ```markdown
 # {프로젝트 이름}
-> {한 줄 설명}
 
-## 이 문서를 읽는 방법
-이 프로젝트를 처음 접하는 경우, 아래 순서로 문서를 읽으세요.
-1. `docs/project-overview.md` - 프로젝트가 무엇인지 파악
-2. `docs/infra.md` - 어떤 기술과 인프라로 돌아가는지 파악
-3. `docs/deploy.md` - 어떻게 배포되는지 파악
-4. `docs/change-log.md` - 최근 변경사항 파악
+> {한 줄 요약 — "무엇을 + 어떤 기술로" 한 문장}
 
-## 문서 목록
-| 문서 | 위치 | 설명 | 업데이트 시점 |
-|---|---|---|---|
-| 프로젝트 개요 | `docs/project-overview.md` | 프로젝트 목적 / 주요 사용자 / 주요 기능 | 기능 추가·변경 시 |
-| 인프라 | `docs/infra.md` | 기술 스택 / DB 구조 / 환경변수 / 외부 서비스 연동 | 인프라 변경 시 |
-| 배포 | `docs/deploy.md` | 배포 환경 / 배포 방식 / 배포 이력 | 배포 설정 변경 시 |
-| 변경 이력 | `docs/change-log.md` | 주요 변경사항 시간순 기록 | 작업 완료 시마다 |
+## 모아나 봇을 위한 빠른 참조
 
-## 스킬 목록
-| 스킬 | 설명 | 실행 방법 |
-|---|---|---|
-| `moa-init` | 프로젝트 초기 세팅 | `/moa-init` 또는 "init 실행해줘" |
-| `moa-supabase` | Supabase 프로젝트 연결 | `/moa-supabase` 또는 "supabase 연결해줘" |
-| `moa-design` | MOA 디자인 시스템 기반 UI 생성 | `/moa-design` 또는 "디자인 만들어줘" |
-| `develop` | 기능 개발 진입점 (기획 → 개발 순서로 진행) | `/develop` 또는 "개발해줘" |
-| `plan-feature` | 기능 요청 분석 → 요구사항 정리 → 구현 방식 제안 (단독 실행 가능) | `/plan-feature` 또는 "기획해줘" |
-| `build-feature` | 확정된 기획 기반으로 실제 코드 작성 (단독 실행 가능) | `/build-feature` 또는 "개발 시작해줘" |
-| `complete-task` | git diff 분석 → 변경사항 리스트업 → docs/ 문서 업데이트 | `/complete-task` 또는 "작업 완료" |
-| `moa-security` | 코드 보안 점검 (배포 전 자동 실행) | `/moa-security` 또는 "보안 점검해줘" |
-| `deploy-dev` | 개발 환경 배포 (dev 환경 세팅된 프로젝트만) | `/deploy-dev` 또는 "개발 배포해줘" |
-| `deploy-prod` | 보안 점검 필수 통과 후 운영 환경 배포 | `/deploy-prod` 또는 "운영 배포해줘" |
-| `share-update` | 배포 후 내부 공유용 HTML 생성 (신규 기능 소개 / As-is·To-be) | `/share-update` 또는 "공유 문서 만들어줘" |
+**이 레포의 책임 영역**
+
+| 도메인 | 위치 |
+|--------|------|
+{L1 주요 기능 목록 기반으로 도메인 행 작성}
+
+**레포 간 의존성**
+
+{외부 API 연동 선택 시만 작성, 없으면 섹션 전체 생략}
+
+| 방향 | 대상 레포 | 사용 영역 | 이 레포의 진입점 |
+|------|----------|----------|----------------|
+| 사용함 | — | — | — |
+
+**핵심 도메인 용어**
+
+{개발 진행 후 complete-task 시 moa-readme가 업데이트}
+
+## 파일 맵
+
+{개발 진행 후 complete-task 시 moa-readme가 업데이트}
+
+## 핵심 플로우
+
+{개발 진행 후 complete-task 시 moa-readme가 업데이트}
+
+## 기술 스택
+
+| 레이어 | 기술 |
+|--------|------|
+| 프론트엔드 | Next.js, TypeScript, Tailwind CSS |
+| DB | {Supabase / RDS / 없음} |
+| 배포 | {Vercel / EC2} |
+{외부 API 연동 시: | 외부 연동 | {서비스명} |}
+
+## 개발 시작
+
+```bash
+npm install
+npm run dev
+```
+
+## 환경변수
+
+| 변수 | 설명 | 기본값 |
+|------|------|--------|
+{.env.example 항목 기반으로 행 작성}
+
+## 주의사항
+
+{개발 진행 후 complete-task 시 moa-readme가 업데이트}
 ```
 
 ---
