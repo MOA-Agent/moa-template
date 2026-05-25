@@ -47,24 +47,37 @@ docs/share/{YYYYMMDD}-{프로젝트이름}-update.html
 
 ### 4. PDF 변환
 
-puppeteer와 form-data가 설치되어 있지 않으면 먼저 설치합니다.
+`puppeteer-core`가 설치되어 있지 않으면 먼저 설치합니다. (`puppeteer` 대신 `puppeteer-core`를 사용해 시스템 Chrome을 직접 활용합니다. Chromium 별도 다운로드 없음)
 
 ```bash
-npm install puppeteer --save-dev
+npm list puppeteer-core --depth=0 2>/dev/null | grep -q puppeteer-core || npm install puppeteer-core --save-dev
 ```
 
-아래 스크립트를 실행해 PDF를 생성합니다.
+아래 스크립트를 실행해 PDF를 생성합니다. 시스템 Chrome 경로를 순서대로 탐색합니다.
 
 ```bash
 node -e "
-const puppeteer = require('puppeteer');
+const puppeteer = require('puppeteer-core');
 const path = require('path');
+const fs = require('fs');
+
+const chromePaths = [
+  '/Applications/Google Chrome.app/Contents/MacOS/Google Chrome',
+  '/Applications/Chromium.app/Contents/MacOS/Chromium',
+  '/usr/bin/google-chrome',
+  '/usr/bin/chromium-browser',
+];
+
+const executablePath = chromePaths.find(p => fs.existsSync(p));
+if (!executablePath) { console.error('Chrome을 찾을 수 없습니다. Chrome을 설치해주세요.'); process.exit(1); }
+
 (async () => {
-  const browser = await puppeteer.launch();
+  const browser = await puppeteer.launch({ executablePath, args: ['--no-sandbox'] });
   const page = await browser.newPage();
   await page.goto('file://' + path.resolve('{HTML 파일 경로}'), { waitUntil: 'networkidle0' });
   await page.pdf({ path: '{PDF 파일 경로}', format: 'A4', printBackground: true });
   await browser.close();
+  console.log('PDF 생성 완료');
 })();
 "
 ```
