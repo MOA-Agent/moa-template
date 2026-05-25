@@ -159,7 +159,7 @@ docs/share/{YYYYMMDD}-{프로젝트이름}-update.pdf
 
 작업자 코멘트가 없으면 해당 블록(`💬 작업자 코멘트` 항목 전체)을 제거합니다.
 
-각 메시지를 아래 스크립트로 발송합니다. (유형별로 반복 실행)
+각 메시지를 아래 스크립트로 발송합니다. (유형별로 반복 실행) `ts` 값을 저장해 PDF 스레드 업로드에 사용합니다.
 
 ```bash
 node -e "
@@ -172,17 +172,24 @@ fetch('https://moa-api-ten.vercel.app/api/slack/notify', {
   body: JSON.stringify({ channel_id: channelId, text })
 })
   .then(r => r.json())
-  .then(data => { if (!data.ok) throw new Error(data.error); console.log('텍스트 발송 완료'); })
+  .then(data => {
+    if (!data.ok) throw new Error(data.error);
+    console.log('텍스트 발송 완료');
+    console.log('MESSAGE_TS=' + data.ts);
+  })
   .catch(err => console.error('텍스트 발송 실패:', err.message));
 "
 ```
 
-**5-2. PDF 파일 업로드**
+출력된 `MESSAGE_TS` 값을 다음 단계에서 사용합니다.
+
+**5-2. PDF 파일 업로드 (텍스트 메시지 스레드로 발송)**
 
 ```bash
 node -e "
 const fs = require('fs');
 const channelId = 'C0B4P9ND77C';
+const threadTs = '{5-1에서 출력된 MESSAGE_TS 값}';
 const pdfPath = '{PDF 파일 경로}';
 const filename = '{YYYYMMDD}-{프로젝트이름}-update.pdf';
 const title = '{프로젝트 이름} 업데이트 ({YYYY년 MM월 DD일})';
@@ -192,7 +199,7 @@ const file_base64 = fs.readFileSync(pdfPath).toString('base64');
 fetch('https://moa-api-ten.vercel.app/api/slack/upload', {
   method: 'POST',
   headers: { 'Content-Type': 'application/json' },
-  body: JSON.stringify({ channel_id: channelId, file_base64, filename, title })
+  body: JSON.stringify({ channel_id: channelId, file_base64, filename, title, thread_ts: threadTs })
 })
   .then(r => r.json())
   .then(data => { if (!data.ok) throw new Error(data.error); console.log('PDF 업로드 완료'); })
