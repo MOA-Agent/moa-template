@@ -113,60 +113,57 @@ docs/share/{YYYYMMDD}-{프로젝트이름}-update.pdf
 
 웹페이지 주소는 `docs/deploy.md` 또는 `docs/infra.md`에서 운영 URL을 확인합니다.
 
-**유형별 텍스트 템플릿 (blocks의 section text에 사용)**
+**유형별 Block Kit 구조**
 
-```
-*🆕 신규 기능 배포 | {프로젝트명}*
+유형에 따라 아래 blocks 배열을 구성합니다. 한 배포에 여러 유형이 섞인 경우 유형마다 별도 메시지를 발송합니다.
 
-• {어떤 기능이 추가되었는지}
-• {어떤 상황에서 사용하는 기능인지}
-• {기대 효과 또는 변경 포인트}
+작업자 코멘트가 없으면 해당 section block 전체를 제거합니다.
+웹페이지 주소는 `docs/deploy.md` 또는 `docs/infra.md`에서 운영 URL을 확인합니다.
 
-💬 작업자 코멘트
-{사용자가 입력한 추가 전달 내용}
-
-🔗 주소: <{운영 URL}|바로가기>
-```
-
-```
-*🔄 기능 변경 | {프로젝트명}*
-
-• {무엇이 어떻게 변경되었는지}
-• {변경된 이유 또는 개선 목적}
-• {기존 사용자 영향 사항}
-
-💬 작업자 코멘트
-{사용자가 입력한 추가 전달 내용}
-
-🔗 주소: <{운영 URL}|바로가기>
+**🆕 신규 기능**
+```json
+[
+  { "type": "header", "text": { "type": "plain_text", "text": "🆕 신규 기능 배포 | {프로젝트명}" } },
+  { "type": "section", "text": { "type": "mrkdwn", "text": "{어떤 기능이 추가되었는지}\n_{어떤 상황에서 사용하는 기능인지}_\n*효과:* {기대 효과 또는 변경 포인트}" } },
+  { "type": "divider" },
+  { "type": "section", "text": { "type": "mrkdwn", "text": "💬 *작업자 코멘트*\n{작업자 코멘트 내용}" } },
+  { "type": "context", "elements": [{ "type": "mrkdwn", "text": "🔗 <{운영 URL}|바로가기>  •  {YYYY년 MM월 DD일}" }] }
+]
 ```
 
-```
-*🛠 오류 수정 | {프로젝트명}*
-
-• {발생하던 문제}
-• {수정된 내용}
-• {추가 영향 범위 또는 참고 사항}
-
-💬 작업자 코멘트
-{사용자가 입력한 추가 전달 내용}
-
-🔗 주소: <{운영 URL}|바로가기>
+**🔄 기능 변경**
+```json
+[
+  { "type": "header", "text": { "type": "plain_text", "text": "🔄 기능 변경 | {프로젝트명}" } },
+  { "type": "section", "text": { "type": "mrkdwn", "text": "{무엇이 어떻게 변경되었는지}\n*이유:* {변경된 이유 또는 개선 목적}\n*영향:* {기존 사용자 영향 사항}" } },
+  { "type": "divider" },
+  { "type": "section", "text": { "type": "mrkdwn", "text": "💬 *작업자 코멘트*\n{작업자 코멘트 내용}" } },
+  { "type": "context", "elements": [{ "type": "mrkdwn", "text": "🔗 <{운영 URL}|바로가기>  •  {YYYY년 MM월 DD일}" }] }
+]
 ```
 
-작업자 코멘트가 없으면 해당 블록(`💬 작업자 코멘트` 항목 전체)을 제거합니다.
+**🛠 오류 수정**
+```json
+[
+  { "type": "header", "text": { "type": "plain_text", "text": "🛠 오류 수정 | {프로젝트명}" } },
+  { "type": "section", "text": { "type": "mrkdwn", "text": "*문제:* {발생하던 문제}\n*수정:* {수정된 내용}\n*범위:* {추가 영향 범위 또는 참고 사항}" } },
+  { "type": "divider" },
+  { "type": "section", "text": { "type": "mrkdwn", "text": "💬 *작업자 코멘트*\n{작업자 코멘트 내용}" } },
+  { "type": "context", "elements": [{ "type": "mrkdwn", "text": "🔗 <{운영 URL}|바로가기>  •  {YYYY년 MM월 DD일}" }] }
+]
+```
 
-각 메시지를 아래 스크립트로 발송합니다. (유형별로 반복 실행) `ts` 값을 저장해 PDF 스레드 업로드에 사용합니다.
+위 blocks를 채워 아래 스크립트로 발송합니다. (유형별로 반복 실행) `ts` 값을 저장해 PDF 스레드 업로드에 사용합니다.
 
 ```bash
 node -e "
 const channelId = 'C0B4P9ND77C';
-const text = \`{위 템플릿 중 해당하는 내용으로 채운 텍스트}\`;
+const blocks = {위 유형에 맞는 blocks 배열};
 
 fetch('https://moa-api-ten.vercel.app/api/slack/notify', {
   method: 'POST',
   headers: { 'Content-Type': 'application/json' },
-  body: JSON.stringify({ channel_id: channelId, text })
+  body: JSON.stringify({ channel_id: channelId, text: '{유형} | {프로젝트명}', blocks })
 })
   .then(r => r.json())
   .then(data => {
