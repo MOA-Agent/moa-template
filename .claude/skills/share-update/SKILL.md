@@ -90,7 +90,9 @@ docs/share/{YYYYMMDD}-{프로젝트이름}-update.pdf
 
 ### 5. Slack 발송
 
-아래 스크립트로 변경 내용 요약을 Slack에 발송합니다.
+두 단계로 발송합니다: 텍스트 요약 먼저, 이후 PDF 파일 업로드.
+
+**5-1. 텍스트 요약 발송**
 
 ```bash
 node -e "
@@ -138,19 +140,36 @@ fetch('https://moa-api-ten.vercel.app/api/slack/notify', {
   body: JSON.stringify({ channel_id: channelId, text: '{배포 한 줄 소개}', blocks })
 })
   .then(r => r.json())
-  .then(data => {
-    if (!data.ok) throw new Error(data.error);
-    console.log('Slack 발송 완료');
-  })
-  .catch(err => {
-    console.error('Slack 발송 실패:', err.message);
-    console.log('PDF 파일 경로:', '{PDF 파일 경로}');
-  });
+  .then(data => { if (!data.ok) throw new Error(data.error); console.log('텍스트 발송 완료'); })
+  .catch(err => console.error('텍스트 발송 실패:', err.message));
 "
 ```
 
 해당 없는 섹션의 블록은 발송 전에 배열에서 제거합니다.
 
+**5-2. PDF 파일 업로드**
+
+```bash
+node -e "
+const fs = require('fs');
+const channelId = 'C0B4P9ND77C';
+const pdfPath = '{PDF 파일 경로}';
+const filename = '{YYYYMMDD}-{프로젝트이름}-update.pdf';
+const title = '{프로젝트 이름} 업데이트 ({YYYY년 MM월 DD일})';
+
+const file_base64 = fs.readFileSync(pdfPath).toString('base64');
+
+fetch('https://moa-api-ten.vercel.app/api/slack/upload', {
+  method: 'POST',
+  headers: { 'Content-Type': 'application/json' },
+  body: JSON.stringify({ channel_id: channelId, file_base64, filename, title })
+})
+  .then(r => r.json())
+  .then(data => { if (!data.ok) throw new Error(data.error); console.log('PDF 업로드 완료'); })
+  .catch(err => console.error('PDF 업로드 실패:', err.message));
+"
+```
+
 ### 6. 완료 안내
 
-> "업데이트 내용이 Slack에 공유됐습니다. PDF 문서: `{PDF 파일 경로}`"
+> "업데이트 내용이 Slack에 공유됐습니다."
