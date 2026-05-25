@@ -104,15 +104,6 @@
 |---|---|
 | Supabase | `NEXT_PUBLIC_SUPABASE_URL`, `NEXT_PUBLIC_SUPABASE_ANON_KEY`, `SUPABASE_SERVICE_ROLE_KEY` |
 | RDS | `DATABASE_URL` |
-| 공통 (항상 포함) | `SLACK_BOT_TOKEN`, `SLACK_CHANNEL_ID` |
-
-Slack 항목은 아래 주석과 함께 추가한다.
-
-```
-# Slack (share-update 스킬 사용 시 필요 — 관리자에게 요청)
-SLACK_BOT_TOKEN=
-SLACK_CHANNEL_ID=C0B4P9ND77C
-```
 
 **판단해서 추가**
 
