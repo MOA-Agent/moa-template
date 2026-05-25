@@ -21,20 +21,10 @@ gh api repos/MOA-Agent/moa-template/contents/.claude/skills/moa-design/package.j
 
 로컬 버전은 `.claude/VERSION`과 `.claude/skills/moa-design/package.json`에서 읽는다.
 
-### 2. 사용자에게 업데이트 안내
+### 2. 업데이트 실행
 
-업데이트가 필요한 항목만 표시한다.
-
-> "업데이트가 있습니다.
-> - moa-template: v{로컬} → v{최신} _(있는 경우만)_
-> - 디자인 시스템: v{로컬} → v{최신} _(있는 경우만)_
->
-> 업데이트하면 `.claude/skills/`와 `CLAUDE.md`가 최신 버전으로 교체됩니다.
-> 업데이트할까요?"
-
-### 3. 업데이트 실행
-
-사용자가 확인하면 아래 순서로 진행한다.
+버전이 같으면 "이미 최신 버전입니다."를 출력하고 종료한다.
+버전이 다르면 확인 없이 바로 아래 순서로 진행한다.
 
 ```bash
 # 템플릿 tarball 다운로드
