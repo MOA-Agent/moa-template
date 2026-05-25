@@ -11,7 +11,12 @@ Files of interest:
 - `README.md` — brand context, content fundamentals, visual foundations, iconography policy.
 - `colors_and_type.css` — all tokens (color, type, radius, spacing, shadow) as CSS variables + utility classes (`t-display1`, `t-body1`, …).
 - `assets/` — MOA logos and brand assets.
-- `component-references/` — single-purpose HTML cards demonstrating each foundation and component, useful as references when building anything new.
+- `component-references/` — single-purpose HTML cards demonstrating each foundation and component. **UI 작업 시 반드시 읽어야 한다.** 구현할 컴포넌트와 유사한 파일을 찾아 토큰과 구조를 확인한 뒤 코드를 작성한다.
+
+추가 참고: GitHub `MOA-Agent/moa-design-system` 레포에서 최신 컴포넌트 구조와 토큰을 확인할 수 있다.
+```bash
+gh api repos/MOA-Agent/moa-design-system/contents/ --jq '.[].name'
+```
 
 Quick reference for visual decisions:
 
