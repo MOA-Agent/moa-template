@@ -100,3 +100,16 @@ git push origin main
 ### 6. 문서 업데이트
 
 `.claude/skills/complete-task/SKILL.md`를 읽고 지침에 따라 문서 업데이트를 진행합니다.
+
+### 7. 팀 공유 여부 확인
+
+`AskUserQuestion` 툴로 묻습니다.
+
+```
+header: "팀에 배포 내용을 공유할까요?"
+options:
+  - label: "공유할게요", description: "Slack에 업데이트 내용을 공유합니다"
+  - label: "괜찮아요", description: "단순 수정이거나 공유가 필요 없는 경우 건너뜁니다"
+```
+
+"공유할게요" 선택 시 `.claude/skills/share-update/SKILL.md`를 읽고 지침에 따라 진행합니다.
