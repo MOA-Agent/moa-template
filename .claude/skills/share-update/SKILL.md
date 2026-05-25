@@ -109,58 +109,68 @@ docs/share/{YYYYMMDD}-{프로젝트이름}-update.pdf
 
 **5-1. 텍스트 요약 발송**
 
+변경사항 유형(신규 기능 / 기능 변경 / 오류 수정)에 따라 아래 템플릿 중 해당하는 것을 사용합니다. 한 배포에 여러 유형이 섞인 경우 각 유형마다 별도 메시지를 발송합니다.
+
+웹페이지 주소는 `docs/deploy.md` 또는 `docs/infra.md`에서 운영 URL을 확인합니다.
+
+**유형별 텍스트 템플릿 (blocks의 section text에 사용)**
+
+```
+🆕 신규 기능 배포 | {프로젝트명}
+
+- {어떤 기능이 추가되었는지}
+- {어떤 상황에서 사용하는 기능인지}
+- {기대 효과 또는 변경 포인트}
+
+💬 작업자 코멘트
+{사용자가 입력한 추가 전달 내용. 없으면 이 항목 제거}
+
+🔗 주소: {운영 URL}
+```
+
+```
+🔄 기능 변경 | {프로젝트명}
+
+- {무엇이 어떻게 변경되었는지}
+- {변경된 이유 또는 개선 목적}
+- {기존 사용자 영향 사항}
+
+💬 작업자 코멘트
+{사용자가 입력한 추가 전달 내용. 없으면 이 항목 제거}
+
+🔗 주소: {운영 URL}
+```
+
+```
+🛠 오류 수정 | {프로젝트명}
+
+- {발생하던 문제}
+- {수정된 내용}
+- {추가 영향 범위 또는 참고 사항}
+
+💬 작업자 코멘트
+{사용자가 입력한 추가 전달 내용. 없으면 이 항목 제거}
+
+🔗 주소: {운영 URL}
+```
+
+각 메시지를 아래 스크립트로 발송합니다. (유형별로 반복 실행)
+
 ```bash
 node -e "
 const channelId = 'C0B4P9ND77C';
-
-const blocks = [
-  {
-    type: 'header',
-    text: { type: 'plain_text', text: '{프로젝트 이름} 업데이트' }
-  },
-  {
-    type: 'section',
-    text: { type: 'mrkdwn', text: '*{배포 한 줄 소개}*' }
-  },
-  { type: 'divider' },
-  // 신규 기능이 있는 경우만 포함
-  {
-    type: 'section',
-    text: { type: 'mrkdwn', text: '*🆕 신규 기능*\n{신규 기능 목록 (없으면 이 블록 제거)}' }
-  },
-  // 변경사항이 있는 경우만 포함
-  {
-    type: 'section',
-    text: { type: 'mrkdwn', text: '*✏️ 변경사항*\n{변경사항 목록 (없으면 이 블록 제거)}' }
-  },
-  // 버그 수정이 있는 경우만 포함
-  {
-    type: 'section',
-    text: { type: 'mrkdwn', text: '*🐛 버그 수정*\n{버그 수정 목록 (없으면 이 블록 제거)}' }
-  },
-  // 영향 범위가 있는 경우만 포함
-  {
-    type: 'section',
-    text: { type: 'mrkdwn', text: '*📢 영향 범위*\n{영향 범위 (없으면 이 블록 제거)}' }
-  },
-  {
-    type: 'context',
-    elements: [{ type: 'mrkdwn', text: '{YYYY년 MM월 DD일}' }]
-  }
-];
+const text = \`{위 템플릿 중 해당하는 내용으로 채운 텍스트}\`;
 
 fetch('https://moa-api-ten.vercel.app/api/slack/notify', {
   method: 'POST',
   headers: { 'Content-Type': 'application/json' },
-  body: JSON.stringify({ channel_id: channelId, text: '{배포 한 줄 소개}', blocks })
+  body: JSON.stringify({ channel_id: channelId, text })
 })
   .then(r => r.json())
   .then(data => { if (!data.ok) throw new Error(data.error); console.log('텍스트 발송 완료'); })
   .catch(err => console.error('텍스트 발송 실패:', err.message));
 "
 ```
-
-해당 없는 섹션의 블록은 발송 전에 배열에서 제거합니다.
 
 **5-2. PDF 파일 업로드**
 
