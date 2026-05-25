@@ -4,14 +4,23 @@
 
 새 대화가 시작될 때 아래를 순서대로 실행한다.
 
-1. `.claude/VERSION` 파일을 읽어 로컬 버전을 확인한다.
-2. 아래 명령으로 moa-template 최신 버전을 가져온다.
+1. `.claude/VERSION` 파일을 읽어 로컬 템플릿 버전을 확인한다.
+2. `.claude/skills/moa-design/package.json`의 `version` 필드를 읽어 로컬 디자인 시스템 버전을 확인한다.
+3. 아래 명령으로 최신 버전을 가져온다.
    ```bash
+   # 템플릿 버전
    gh api repos/MOA-Agent/moa-template/contents/.claude/VERSION --jq '.content' | base64 -d
+
+   # 디자인 시스템 버전
+   gh api repos/MOA-Agent/moa-template/contents/.claude/skills/moa-design/package.json --jq '.content' | base64 -d | jq -r '.version'
    ```
-3. 버전이 다르면 아래 메시지를 출력한다.
-   > "moa-template v{최신버전}으로 업데이트가 있어요. 업데이트할까요? (`/moa-update`로 진행)"
-4. 버전이 같으면 아무것도 출력하지 않는다.
+4. 버전이 다른 항목이 있으면 아래 메시지를 출력한다. (같은 항목은 생략)
+   > "업데이트가 있어요.
+   > - moa-template: v{로컬} → v{최신} _(있는 경우만)_
+   > - 디자인 시스템: v{로컬} → v{최신} _(있는 경우만)_
+   >
+   > 업데이트할까요? (`/moa-update`로 진행)"
+5. 모두 최신이면 아무것도 출력하지 않는다.
 
 ---
 
