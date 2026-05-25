@@ -124,7 +124,7 @@ docs/share/{YYYYMMDD}-{프로젝트이름}-update.pdf
 ```json
 [
   { "type": "header", "text": { "type": "plain_text", "text": "🆕 신규 기능 배포 | {프로젝트명}" } },
-  { "type": "section", "text": { "type": "mrkdwn", "text": "{어떤 기능이 추가되었는지}\n_{어떤 상황에서 사용하는 기능인지}_\n*효과:* {기대 효과 또는 변경 포인트}" } },
+  { "type": "section", "text": { "type": "mrkdwn", "text": "{어떤 기능이 추가되었는지}\n{어떤 상황에서 사용하는 기능인지}\n*효과:* {기대 효과 또는 변경 포인트}" } },
   { "type": "divider" },
   { "type": "section", "text": { "type": "mrkdwn", "text": "💬 *작업자 코멘트*\n{작업자 코멘트 내용}" } },
   { "type": "context", "elements": [{ "type": "mrkdwn", "text": "🔗 <{운영 URL}|바로가기>  •  {YYYY년 MM월 DD일}" }] }
