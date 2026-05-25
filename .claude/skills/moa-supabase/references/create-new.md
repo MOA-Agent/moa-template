@@ -50,15 +50,27 @@ supabase orgs list
 
 조직이 여러 개면 사용할 조직을 사용자에게 선택받는다.
 
-### 4. 프로젝트 생성
+### 4. DB 비밀번호 입력
 
-DB 비밀번호를 랜덤으로 생성하고 프로젝트를 만든다.
+아래 안내를 출력하고 사용자에게 입력받는다.
+
+```
+DB 비밀번호를 입력해주세요.
+(영문 + 숫자 + 특수문자 조합, 16자 이상 권장)
+```
+
+입력받은 비밀번호는 `.env.local`에 저장한다.
+```
+SUPABASE_DB_PASSWORD={입력받은 비밀번호}
+```
+
+### 5. 프로젝트 생성
 
 **통합(운영만)인 경우:**
 ```bash
 supabase projects create {프로젝트-이름} \
   --org-id {org-id} \
-  --db-password {랜덤-비밀번호} \
+  --db-password {입력받은-비밀번호} \
   --region ap-northeast-2
 ```
 
@@ -67,25 +79,25 @@ supabase projects create {프로젝트-이름} \
 # 개발
 supabase projects create {프로젝트-이름}-dev \
   --org-id {org-id} \
-  --db-password {랜덤-비밀번호} \
+  --db-password {입력받은-비밀번호} \
   --region ap-northeast-2
 
 # 운영
 supabase projects create {프로젝트-이름} \
   --org-id {org-id} \
-  --db-password {랜덤-비밀번호} \
+  --db-password {입력받은-비밀번호} \
   --region ap-northeast-2
 ```
 
 생성 완료 후 반환된 `project-ref`를 저장해둔다.
 
-### 5. 프로젝트 연결
+### 6. 프로젝트 연결
 
 ```bash
 supabase link --project-ref {project-ref}
 ```
 
-### 6. .env 파일 업데이트 안내
+### 7. .env 파일 업데이트 안내
 
 ```
 ✅ Supabase 프로젝트 생성 및 연결 완료!
