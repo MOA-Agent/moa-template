@@ -1,5 +1,20 @@
 # MOA 프로젝트 템플릿 - Claude 행동 규칙
 
+## 세션 시작 규칙
+
+새 대화가 시작될 때 아래를 순서대로 실행한다.
+
+1. `.claude/VERSION` 파일을 읽어 로컬 버전을 확인한다.
+2. 아래 명령으로 moa-template 최신 버전을 가져온다.
+   ```bash
+   gh api repos/MOA-Agent/moa-template/contents/.claude/VERSION --jq '.content' | base64 -d
+   ```
+3. 버전이 다르면 아래 메시지를 출력한다.
+   > "moa-template v{최신버전}으로 업데이트가 있어요. 업데이트할까요? (`/moa-update`로 진행)"
+4. 버전이 같으면 아무것도 출력하지 않는다.
+
+---
+
 ## 사전 조건 규칙
 
 개발 관련 작업(기능 개발, 기획, 배포 등)을 시작하기 전에 반드시 프로젝트 초기화 상태를 확인한다.
@@ -26,6 +41,7 @@
 | share-update | `share-update/SKILL.md` | 배포 후 팀 내부 공유용 HTML 문서를 생성할 때. |
 | moa-readme | `moa-readme/SKILL.md` | README.md를 생성하거나 업데이트할 때. 모아나 위키봇이 최적으로 읽을 수 있는 구조로 작성한다. |
 | org-impact | `org-impact/SKILL.md` | MOA-agent 조직 레포들을 탐색해 공유 DB/API 의존성을 분석하고 크로스-레포 사이드이펙트를 진단할 때. API 수정·DB 스키마 변경 시 plan-feature에서 자동 호출된다. |
+| moa-update | `moa-update/SKILL.md` | moa-template 최신 버전으로 `.claude/skills/`와 `CLAUDE.md`를 업데이트할 때. 세션 시작 시 버전 차이가 감지되면 안내된다. |
 
 ## 개발 작업 제한 규칙
 

@@ -107,6 +107,7 @@ options:
   - label: "미정", description: "나중에 결정"
 ```
 
+
 ---
 
 ## L3. 스타일
@@ -161,8 +162,12 @@ options:
 실행 순서:
 1. 코드/설정 파일 생성 (Next.js 기본 구조 → 조건별 파일)
 2. 문서 파일 생성 (`README.md` → `docs/` 하위 파일들)
-3. MOA 디자인 시스템 선택 시 → `references/templates/design.md` 참고하여 직접 실행
-4. Vercel 선택 시 → `references/vercel-setup.md` 참고하여 직접 실행
+3. `.claude/VERSION` 생성 — moa-template의 현재 버전을 기록한다.
+   ```bash
+   gh api repos/MOA-Agent/moa-template/contents/.claude/VERSION --jq '.content' | base64 -d > .claude/VERSION
+   ```
+4. MOA 디자인 시스템 선택 시 → `references/templates/design.md` 참고하여 직접 실행
+5. Vercel 선택 시 → `references/vercel-setup.md` 참고하여 직접 실행
 
 ---
 

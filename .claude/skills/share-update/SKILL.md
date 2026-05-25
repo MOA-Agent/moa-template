@@ -1,6 +1,6 @@
 ---
 name: moa-share-update
-description: 배포 후 내부 공유용 HTML 문서를 자동 생성하는 스킬. change-log.md와 최신 커밋 기반으로 변경사항을 파악하고 MOA 디자인 시스템 기반의 HTML을 생성한다.
+description: 배포 후 내부 공유용 HTML/PDF 문서를 자동 생성하고 Slack으로 발송하는 스킬. change-log.md와 최신 커밋 기반으로 변경사항을 파악하고 MOA 디자인 시스템 기반의 HTML을 생성한 뒤, MOA API를 통해 Slack에 공유한다.
 ---
 
 당신은 MOA 프로젝트의 내부 공유 문서 작성 담당자입니다.
@@ -45,6 +45,99 @@ git log origin/main -10 --oneline
 docs/share/{YYYYMMDD}-{프로젝트이름}-update.html
 ```
 
-### 4. 완료 안내
+### 4. PDF 변환
 
-> "공유 문서가 생성되었습니다: `{파일 경로}`"
+puppeteer와 form-data가 설치되어 있지 않으면 먼저 설치합니다.
+
+```bash
+npm install puppeteer --save-dev
+```
+
+아래 스크립트를 실행해 PDF를 생성합니다.
+
+```bash
+node -e "
+const puppeteer = require('puppeteer');
+const path = require('path');
+(async () => {
+  const browser = await puppeteer.launch();
+  const page = await browser.newPage();
+  await page.goto('file://' + path.resolve('{HTML 파일 경로}'), { waitUntil: 'networkidle0' });
+  await page.pdf({ path: '{PDF 파일 경로}', format: 'A4', printBackground: true });
+  await browser.close();
+})();
+"
+```
+
+PDF 저장 경로는 HTML과 동일한 위치에 확장자만 `.pdf`로 변경합니다.
+
+```
+docs/share/{YYYYMMDD}-{프로젝트이름}-update.pdf
+```
+
+### 5. Slack 발송
+
+아래 스크립트로 변경 내용 요약을 Slack에 발송합니다.
+
+```bash
+node -e "
+const channelId = 'C0B4P9ND77C';
+
+const blocks = [
+  {
+    type: 'header',
+    text: { type: 'plain_text', text: '{프로젝트 이름} 업데이트' }
+  },
+  {
+    type: 'section',
+    text: { type: 'mrkdwn', text: '*{배포 한 줄 소개}*' }
+  },
+  { type: 'divider' },
+  // 신규 기능이 있는 경우만 포함
+  {
+    type: 'section',
+    text: { type: 'mrkdwn', text: '*🆕 신규 기능*\n{신규 기능 목록 (없으면 이 블록 제거)}' }
+  },
+  // 변경사항이 있는 경우만 포함
+  {
+    type: 'section',
+    text: { type: 'mrkdwn', text: '*✏️ 변경사항*\n{변경사항 목록 (없으면 이 블록 제거)}' }
+  },
+  // 버그 수정이 있는 경우만 포함
+  {
+    type: 'section',
+    text: { type: 'mrkdwn', text: '*🐛 버그 수정*\n{버그 수정 목록 (없으면 이 블록 제거)}' }
+  },
+  // 영향 범위가 있는 경우만 포함
+  {
+    type: 'section',
+    text: { type: 'mrkdwn', text: '*📢 영향 범위*\n{영향 범위 (없으면 이 블록 제거)}' }
+  },
+  {
+    type: 'context',
+    elements: [{ type: 'mrkdwn', text: '{YYYY년 MM월 DD일}' }]
+  }
+];
+
+fetch('https://moa-api-ten.vercel.app/api/slack/notify', {
+  method: 'POST',
+  headers: { 'Content-Type': 'application/json' },
+  body: JSON.stringify({ channel_id: channelId, text: '{배포 한 줄 소개}', blocks })
+})
+  .then(r => r.json())
+  .then(data => {
+    if (!data.ok) throw new Error(data.error);
+    console.log('Slack 발송 완료');
+  })
+  .catch(err => {
+    console.error('Slack 발송 실패:', err.message);
+    console.log('PDF 파일 경로:', '{PDF 파일 경로}');
+  });
+"
+```
+
+해당 없는 섹션의 블록은 발송 전에 배열에서 제거합니다.
+
+### 6. 완료 안내
+
+> "업데이트 내용이 Slack에 공유됐습니다. PDF 문서: `{PDF 파일 경로}`"
