@@ -17,6 +17,7 @@ MOA 신규 프로젝트의 초기 환경을 세팅하는 스킬.
 5. 코드/설정 파일 생성
 6. 문서 파일 생성
 7. Vercel 선택 시 인프라 연동 — `references/vercel-setup.md` 참고
+8. EC2 선택 시 인프라 연동 — `references/ec2-setup.md` 참고
 
 ---
 
@@ -168,6 +169,7 @@ options:
    ```
 4. MOA 디자인 시스템 선택 시 → `references/templates/design.md` 참고하여 직접 실행
 5. Vercel 선택 시 → `references/vercel-setup.md` 참고하여 직접 실행
+6. EC2 선택 시 → `references/ec2-setup.md` 참고하여 직접 실행
 
 ---
 

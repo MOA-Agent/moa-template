@@ -24,6 +24,8 @@
 - `Dockerfile`
 - `nginx.conf`
 - `deploy.sh`
+- `.github/workflows/deploy-prod.yml`
+- 배포 환경이 개발+운영인 경우: `.github/workflows/deploy-dev.yml` 추가
 
 ### 배포 환경: 운영만
 - `.env.example`
