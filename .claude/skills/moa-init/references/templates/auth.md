@@ -9,8 +9,11 @@ import type { NextRequest } from 'next/server'
 export function middleware(request: NextRequest) {
   const { pathname } = request.nextUrl
 
-  if (pathname.startsWith('/admin')) {
-    // TODO: 관리자 세션 확인 로직 추가
+  if (pathname.startsWith('/admin') && !pathname.startsWith('/admin/login')) {
+    const token = request.cookies.get('admin_token')?.value
+    if (token !== process.env.ADMIN_SESSION_SECRET) {
+      return NextResponse.redirect(new URL('/admin/login', request.url))
+    }
   }
 
   return NextResponse.next()
@@ -54,8 +57,11 @@ import type { NextRequest } from 'next/server'
 export function middleware(request: NextRequest) {
   const { pathname } = request.nextUrl
 
-  if (pathname.startsWith('/admin')) {
-    // TODO: 관리자 세션 확인 로직 추가
+  if (pathname.startsWith('/admin') && !pathname.startsWith('/admin/login')) {
+    const token = request.cookies.get('admin_token')?.value
+    if (token !== process.env.ADMIN_SESSION_SECRET) {
+      return NextResponse.redirect(new URL('/admin/login', request.url))
+    }
   }
 
   const protectedRoutes = ['/dashboard', '/profile']
@@ -123,6 +129,97 @@ export async function getSession() {
 
 ---
 
+## app/admin/login/page.tsx
+
+```typescript
+'use client'
+
+import { useState } from 'react'
+import { useRouter } from 'next/navigation'
+
+export default function AdminLoginPage() {
+  const [password, setPassword] = useState('')
+  const [error, setError] = useState('')
+  const router = useRouter()
+
+  async function handleSubmit(e: React.FormEvent) {
+    e.preventDefault()
+    setError('')
+
+    const res = await fetch('/api/admin/login', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ password }),
+    })
+
+    if (res.ok) {
+      router.push('/admin')
+    } else {
+      setError('비밀번호가 올바르지 않습니다.')
+    }
+  }
+
+  return (
+    <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', minHeight: '100vh' }}>
+      <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: 12, width: 300 }}>
+        <h1 style={{ fontSize: 20, fontWeight: 700 }}>관리자 로그인</h1>
+        <input
+          type="password"
+          value={password}
+          onChange={e => setPassword(e.target.value)}
+          placeholder="비밀번호"
+          required
+          style={{ padding: '8px 12px', border: '1px solid #ddd', borderRadius: 6 }}
+        />
+        {error && <p style={{ color: 'red', fontSize: 14 }}>{error}</p>}
+        <button type="submit" style={{ padding: '8px 12px', background: '#000', color: '#fff', borderRadius: 6, cursor: 'pointer' }}>
+          로그인
+        </button>
+      </form>
+    </div>
+  )
+}
+```
+
+## app/api/admin/login/route.ts
+
+```typescript
+import { NextResponse } from 'next/server'
+import { cookies } from 'next/headers'
+
+export async function POST(request: Request) {
+  const { password } = await request.json()
+
+  if (password !== process.env.ADMIN_PASSWORD) {
+    return NextResponse.json({ error: 'Unauthorized' }, { status: 401 })
+  }
+
+  const cookieStore = await cookies()
+  cookieStore.set('admin_token', process.env.ADMIN_SESSION_SECRET!, {
+    httpOnly: true,
+    secure: process.env.NODE_ENV === 'production',
+    sameSite: 'lax',
+    maxAge: 60 * 60 * 24 * 7, // 7일
+    path: '/',
+  })
+
+  return NextResponse.json({ ok: true })
+}
+```
+
+## app/api/admin/logout/route.ts
+
+```typescript
+import { NextResponse } from 'next/server'
+import { cookies } from 'next/headers'
+
+export async function POST() {
+  const cookieStore = await cookies()
+  cookieStore.delete('admin_token')
+  return NextResponse.json({ ok: true })
+}
+```
+
 ## app/admin/layout.tsx
 
 ```typescript
@@ -133,7 +230,6 @@ export default function AdminLayout({
 }) {
   return (
     <div>
-      {/* TODO: 관리자 레이아웃 구성 */}
       {children}
     </div>
   )
@@ -147,7 +243,6 @@ export default function AdminPage() {
   return (
     <div>
       <h1>관리자 대시보드</h1>
-      {/* TODO: 관리자 페이지 구성 */}
     </div>
   )
 }

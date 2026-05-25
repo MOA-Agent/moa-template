@@ -52,9 +52,17 @@
 
 ### 관리자 인증: 예
 → `templates/auth.md` 참고
+- `app/admin/login/page.tsx`
 - `app/admin/layout.tsx`
 - `app/admin/page.tsx`
+- `app/api/admin/login/route.ts`
+- `app/api/admin/logout/route.ts`
 - `middleware.ts`
+- `.env.example`에 아래 항목 추가
+  ```
+  ADMIN_PASSWORD=
+  ADMIN_SESSION_SECRET=
+  ```
 
 ### 사용자 인증: 예
 → `templates/auth.md` 참고
