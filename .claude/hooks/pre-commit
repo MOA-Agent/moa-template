@@ -1,0 +1,17 @@
+#!/bin/sh
+# .claude/ 파일이 변경된 커밋이면 .claude/VERSION 자동 bump
+
+VERSION_FILE=".claude/VERSION"
+
+# .claude/ 하위에서 VERSION 파일 자체를 제외한 변경사항이 있는지 확인
+if git diff --cached --name-only | grep "^\.claude/" | grep -qv "^\.claude/VERSION$"; then
+  current=$(cat "$VERSION_FILE")
+  major=$(echo "$current" | cut -d. -f1)
+  minor=$(echo "$current" | cut -d. -f2)
+  patch=$(echo "$current" | cut -d. -f3)
+  new_version="$major.$minor.$((patch + 1))"
+
+  echo "$new_version" > "$VERSION_FILE"
+  git add "$VERSION_FILE"
+  echo "moa-template version: $current → $new_version"
+fi
