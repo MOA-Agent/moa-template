@@ -4,8 +4,11 @@
 
 ### 1. project-ref 입력 받기
 
-> Supabase project-ref를 입력해주세요.
-> (Supabase 대시보드 → 프로젝트 → Settings → General → Reference ID)
+> Supabase Project ID를 입력해주세요.
+>
+> **Project ID란?** Supabase가 각 프로젝트에 부여하는 고유 ID입니다. (예: `abcdefghijklmnop`)
+> 아래 경로에서 확인할 수 있어요:
+> Supabase 대시보드 → 해당 프로젝트 선택 → Settings → General → **Project ID**
 
 ### 2. Supabase 연결
 
