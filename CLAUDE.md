@@ -52,6 +52,36 @@
 | org-impact | `org-impact/SKILL.md` | MOA-agent 조직 레포들을 탐색해 공유 DB/API 의존성을 분석하고 크로스-레포 사이드이펙트를 진단할 때. API 수정·DB 스키마 변경 시 plan-feature에서 자동 호출된다. |
 | moa-update | `moa-update/SKILL.md` | moa-template 최신 버전으로 `.claude/skills/`와 `CLAUDE.md`를 업데이트할 때. 세션 시작 시 버전 차이가 감지되면 안내된다. |
 
+## 배포 요청 처리 규칙
+
+배포 요청이 들어오면 아래 순서로 처리한다.
+
+### 1. 명시적 요청인 경우 → 바로 실행
+
+| 요청 예시 | 실행 |
+|---|---|
+| "개발에 배포해줘", "dev 배포" | `deploy-dev` 실행 |
+| "운영에 배포해줘", "prod 배포", "실서버 배포" | `deploy-prod` 실행 |
+
+### 2. 단순 "배포해줘" 요청인 경우 → 환경 확인 후 분기
+
+`docs/deploy.md`를 읽어 개발 환경 세팅 여부를 확인한다.
+
+**운영 환경만 세팅된 경우**
+→ 묻지 않고 `deploy-prod` 바로 실행
+
+**개발+운영 환경 모두 세팅된 경우**
+→ `AskUserQuestion` 툴로 묻는다.
+```
+header: "어떤 환경에 배포할까요?"
+options:
+  - label: "개발만", description: "개발 환경에만 배포"
+  - label: "운영만", description: "운영 환경에만 배포"
+  - label: "둘 다", description: "개발 → 운영 순서로 배포"
+```
+
+---
+
 ## 개발 작업 제한 규칙
 
 신규 기능 추가, 기존 코드 수정, 버그 수정 등 **모든 개발 작업은 반드시 `develop` 스킬을 통해서만 진행한다.**
