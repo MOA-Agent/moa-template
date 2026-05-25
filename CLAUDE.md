@@ -14,13 +14,13 @@
    # 디자인 시스템 버전
    gh api repos/MOA-Agent/moa-template/contents/.claude/skills/moa-design/package.json --jq '.content' | base64 -d | jq -r '.version'
    ```
-4. 버전이 다른 항목이 있으면 아래 메시지를 출력한다. (같은 항목은 생략)
+4. 버전이 다른 항목이 있으면 아래 메시지를 출력하고 **사용자 응답을 기다린다.** 원래 요청은 응답 후에 처리한다.
    > "Claude 스킬·규칙 업데이트가 있어요.
    > - Claude 스킬 및 행동 규칙 (`.claude/skills/`, `CLAUDE.md`): v{로컬} → v{최신} _(있는 경우만)_
    > - MOA 디자인 시스템 (`.claude/skills/moa-design/`): v{로컬} → v{최신} _(있는 경우만)_
    >
    > 업데이트할까요? (`/moa-update`로 진행)"
-5. 모두 최신이면 아무것도 출력하지 않는다.
+5. 모두 최신이면 아무것도 출력하지 않고 원래 요청을 바로 처리한다.
 
 ---
 
