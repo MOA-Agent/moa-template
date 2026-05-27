@@ -16,6 +16,11 @@ process.stdin.on('end', () => {
 
   const command = (input.tool_input && input.tool_input.command) || '';
 
+  // git 명령은 검사 제외 (커밋 메시지 등에 SQL 키워드가 포함될 수 있음)
+  if (/^\s*git\s/.test(command)) {
+    process.exit(0);
+  }
+
   const BLOCK_PATTERNS = [
     /DROP\s+TABLE/i,
     /DROP\s+SCHEMA/i,
