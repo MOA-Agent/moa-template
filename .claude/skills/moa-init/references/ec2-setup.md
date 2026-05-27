@@ -51,6 +51,7 @@ git init
 git add .
 git commit -m "chore: initial setup"
 gh repo create MOA-Agent/{레포-이름} --{private|public} --source=. --remote=origin --push
+gh repo edit MOA-Agent/{레포-이름} --add-topic moa-product
 ```
 
 **기존 연결 선택 시**
@@ -62,6 +63,7 @@ git add .
 git commit -m "chore: initial setup"
 git remote add origin {레포-URL}
 git push -u origin main
+gh repo edit --add-topic moa-product
 ```
 
 ### 3. GitHub Actions 워크플로우 생성
