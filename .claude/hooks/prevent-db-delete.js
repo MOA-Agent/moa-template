@@ -34,14 +34,5 @@ process.stdin.on('end', () => {
     }
   }
 
-  // WHERE 없는 DELETE FROM 차단
-  if (/DELETE\s+FROM\s+\w+/i.test(command) && !/WHERE/i.test(command)) {
-    process.stderr.write(
-      '🚫 WHERE 조건 없는 DELETE 명령이 차단되었습니다.\n' +
-      '전체 행 삭제는 Supabase 대시보드 또는 AWS 콘솔에서 직접 진행해주세요.\n'
-    );
-    process.exit(2);
-  }
-
   process.exit(0);
 });
