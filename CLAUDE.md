@@ -51,6 +51,7 @@
 | moa-readme | `moa-readme/SKILL.md` | README.md를 생성하거나 업데이트할 때. 모아나 위키봇이 최적으로 읽을 수 있는 구조로 작성한다. |
 | org-impact | `org-impact/SKILL.md` | MOA-agent 조직 레포들을 탐색해 공유 DB/API 의존성을 분석하고 크로스-레포 사이드이펙트를 진단할 때. API 수정·DB 스키마 변경 시 plan-feature에서 자동 호출된다. |
 | moa-update | `moa-update/SKILL.md` | moa-template 최신 버전으로 `.claude/skills/`와 `CLAUDE.md`를 업데이트할 때. 세션 시작 시 버전 차이가 감지되면 안내된다. |
+| moa-feedback | `moa-feedback/SKILL.md` | 템플릿 사용 중 피드백을 남기고 싶을 때. MOA-Agent/moa-template 레포에 GitHub Issue를 자동 등록한다. |
 
 ## 배포 요청 처리 규칙
 
