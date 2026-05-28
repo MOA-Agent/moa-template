@@ -27,10 +27,12 @@ jobs:
           FILES=$(find . -type f \( -name "*.md" -o -name "*.ts" -o -name "*.tsx" -o -name "*.js" -o -name "*.json" \) \
             ! -path "*/node_modules/*" ! -path "*/.git/*" | head -50)
 
-          # 주요 파일 내용 수집
-          FILE_CONTENTS=""
+          # 주요 파일 내용 수집 (임시 파일에 저장)
+          FILE_CONTENTS_PATH=$(mktemp)
           for f in $FILES; do
-            FILE_CONTENTS="${FILE_CONTENTS}\n\n### ${f}\n\`\`\`\n$(cat "$f")\n\`\`\`"
+            printf "\n\n### %s\n\`\`\`\n" "$f" >> "$FILE_CONTENTS_PATH"
+            cat "$f" >> "$FILE_CONTENTS_PATH"
+            printf "\n\`\`\`" >> "$FILE_CONTENTS_PATH"
           done
 
           # OpenAI API 호출
@@ -40,7 +42,7 @@ jobs:
             -d "$(jq -n \
               --arg title "$ISSUE_TITLE" \
               --arg body "$ISSUE_BODY" \
-              --arg files "$FILE_CONTENTS" \
+              --rawfile files "$FILE_CONTENTS_PATH" \
               '{
                 model: "gpt-4o",
                 messages: [
@@ -54,6 +56,7 @@ jobs:
                   }
                 ]
               }')" | jq -r '.choices[0].message.content')
+          rm -f "$FILE_CONTENTS_PATH"
 
           gh issue comment "${ISSUE_NUMBER}" --body "## 🤖 Agent 분석 결과
 
