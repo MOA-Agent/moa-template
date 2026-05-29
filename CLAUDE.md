@@ -44,6 +44,7 @@
 | 스킬 | 파일 | 언제 사용하는가 |
 |---|---|---|
 | moa-init | `moa-init/SKILL.md` | 프로젝트를 새로 시작할 때. `package.json`이 없는 상태에서 개발/배포 요청이 들어오면 이 스킬을 먼저 실행한다. |
+| moa-adopt | `moa-adopt/SKILL.md` | 기존 프로젝트에 moa-template 설정을 적용할 때. 현황을 스캔해 빠진 항목만 추가하거나, 이미 있는 항목을 덮어쓴다. |
 | develop | `develop/SKILL.md` | 기능 개발 요청의 진입점. plan-feature → build-feature 순서로 진행한다. |
 | plan-feature | `plan-feature/SKILL.md` | 개발 전 기획만 먼저 구체화할 때. 요구사항 정리 → 영향 범위 파악 → 구현 방식 제안 → 사용자 확인 순으로 진행한다. |
 | build-feature | `build-feature/SKILL.md` | 기획이 이미 확정된 상태에서 바로 개발을 시작할 때. |
